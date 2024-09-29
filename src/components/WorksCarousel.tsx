@@ -53,6 +53,7 @@ const WorksCarousel = () => {
           plugins={[
             Autoplay({
               delay: 3000,
+              stopOnInteraction: false,
             }),
           ]}
           className="max-w-[80%] md:max-w-[90%] xl:max-w-full relative"
@@ -60,7 +61,7 @@ const WorksCarousel = () => {
           <CarouselContent>
             {worksPhotos.map((photo, index) => (
               <CarouselItem className="sm:basis-1/2 md:basis-1/3" key={index}>
-                <div className="relative aspect-square overflow-hidden">
+                <div className="relative aspect-square overflow-hidden object-center object-cover flex items-center justify-center">
                   <img className="z-20" src={photo.src} alt={photo.alt} />
                   <div className="absolute top-0 left-0 bottom-0 right-0 z-30 bg-button/30 hover:bg-transparent transition" />
                 </div>

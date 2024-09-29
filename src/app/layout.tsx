@@ -18,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Container>{children}</Container>
+        <div className="grainy-light">
+          <Container>{children}</Container>
+        </div>
       </body>
     </html>
   );

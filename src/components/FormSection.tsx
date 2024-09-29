@@ -4,6 +4,18 @@ import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Master, Service } from "../../types";
 import { createClient } from "@supabase/supabase-js";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+} from "./ui/dialog";
+import { DialogTitle } from "@radix-ui/react-dialog";
+import { Button } from "./ui/button";
+import { Cross2Icon } from "@radix-ui/react-icons";
+import { LuFlower, LuFlower2 } from "react-icons/lu";
 
 export type FormValues = {
   service: string;
@@ -11,6 +23,15 @@ export type FormValues = {
   date: string;
   time: string;
   phone: number;
+};
+
+const formatDate = (dateString: string): string => {
+  const dateToDisplay = new Date(dateString);
+
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+  }).format(dateToDisplay);
 };
 
 const generateTimeSlots = (
@@ -92,8 +113,33 @@ const FormSection = ({ services }: FormSectionProps) => {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 
+  const [showSubmitConfirmation, setShowSubmitConfirmation] = useState(false);
+  const handleSubmitConfirmation = () => {
+    setShowSubmitConfirmation(true);
+    setbookingCreated(false);
+    setConfirmationInfo({
+      master: selectedMasterName!,
+      service: selectedServiceInfo!.label,
+      date: selectedDate!,
+      time: selectedTime!,
+      price: price!,
+      phone: phone!,
+    });
+  };
+
+  const handleSubmitConfirmationConfirm = () => {
+    handleSubmit(onSubmit)();
+  };
+
+  const handleSubmitConfirmationClose = () => {
+    setShowSubmitConfirmation(false);
+    setbookingCreated(false);
+    setConfirmationInfo(null);
+  };
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     console.log(data);
+    setIsLoadingConfirmation(true);
 
     const { data: booking, error } = await supabase
       .from("bookings")
@@ -113,9 +159,12 @@ const FormSection = ({ services }: FormSectionProps) => {
     if (booking) {
       setbookingCreated(true);
     }
-
+    setIsLoadingConfirmation(false);
     setSelectedMaster(null);
     setSelectedService(null);
+    setSelectedDate("");
+    setSelectedTime("");
+    setTimeSlots([]);
     reset();
   };
 
@@ -124,10 +173,29 @@ const FormSection = ({ services }: FormSectionProps) => {
     useState<Service | null>(null);
   const [filteredMasters, setFilteredMasters] = useState<Master[]>([]);
   const [selectedMaster, setSelectedMaster] = useState<string | null>(null);
+  const [selectedMasterName, setSelectedMasterName] = useState<string | null>(
+    null
+  );
+  const [price, setPrice] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [timeSlots, setTimeSlots] = useState<string[]>([]);
+  const [isLoadingSlots, setIsLoadingSlots] = useState(false);
+  const [phone, setPhone] = useState<string | null>(null);
 
+  const [isLoadingConfirmation, setIsLoadingConfirmation] = useState(false);
+
+  interface ConfirmationInfo {
+    service: string;
+    master: string;
+    date: string;
+    time: string;
+    price: string;
+    phone: string;
+  }
+
+  const [confirmationInfo, setConfirmationInfo] =
+    useState<ConfirmationInfo | null>(null);
   const [bookingCreated, setbookingCreated] = useState(false);
 
   useEffect(() => {
@@ -171,12 +239,26 @@ const FormSection = ({ services }: FormSectionProps) => {
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setSelectedMaster(e.target.value);
-    // unregister("date");
+    setSelectedMasterName(
+      filteredMasters.find((master) => master.id === parseInt(e.target.value))
+        ?.name!
+    );
+
+    const { data, error } = await supabase
+      .from("services_masters")
+      .select("price")
+      .eq("master_id", e.target.value)
+      .eq("service_id", selectedService);
+
+    const price = data![0].price;
+    setPrice(price);
   };
 
   const handleDateSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDate = e.target.value;
     setSelectedDate(selectedDate);
+
+    setIsLoadingSlots(true);
 
     const { data: selectedDateBookings, error } = await supabase
       .from("bookings")
@@ -184,8 +266,6 @@ const FormSection = ({ services }: FormSectionProps) => {
       .eq("master_id", selectedMaster)
       .gte("booking_date", `${selectedDate}T00:00:00+00:00`)
       .lt("booking_date", `${selectedDate}T23:59:59+00:00`);
-
-    console.log(selectedDate, selectedDateBookings);
 
     const availableTimeSlots = generateTimeSlots(
       30,
@@ -195,20 +275,50 @@ const FormSection = ({ services }: FormSectionProps) => {
     );
 
     setTimeSlots(availableTimeSlots);
-    console.log(availableTimeSlots);
-    console.log(selectedServiceInfo?.duration_in_minutes);
+    setIsLoadingSlots(false);
   };
 
   const handleTimeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTime(e.target.value);
   };
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let input = e.target.value.replace(/\D/g, "");
+    if (input.length > 1 && input.length <= 4) {
+      input = `+${input.slice(0, 1)} (${input.slice(1)}`;
+    } else if (input.length > 4 && input.length <= 7) {
+      input = `+${input.slice(0, 1)} (${input.slice(1, 4)}) ${input.slice(4)}`;
+    } else if (input.length > 7) {
+      input = `+${input.slice(0, 1)} (${input.slice(1, 4)}) ${input.slice(
+        4,
+        7
+      )}-${input.slice(7, 11)}`;
+    }
+    setPhone(input);
+  };
+
   return (
-    <div id="form" className="pt-12 pb-60 flex justify-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-96">
-        <label className="tracking-wide">Выберите услугу</label>
+    <div
+      id="form"
+      className="pt-12 pb-12 flex flex-col items-center justify-center"
+    >
+      <LuFlower2 className="text-center mx-auto mb-8" size={36} />
+
+      <h2 className="text-xl sm:text-2xl font-thin tracking-widest text-center mb-6">
+        Запишитесь прямо сейчас{" "}
+        <span className="bg-button">на любое удобное&nbsp;время!</span>
+      </h2>
+      <hr className="mb-6 h-px border-t-0 w-64 bg-transparent bg-gradient-to-r from-transparent via-black to-transparent opacity-25 dark:via-neutral-400" />
+
+      <form
+        onSubmit={handleSubmit(handleSubmitConfirmation)}
+        className="flex flex-col w-96 border bg-neutral-100 shadow-sm p-6"
+      >
+        <label className="tracking-wide text-muted-foreground mb-1">
+          Выберите услугу
+        </label>
         <select
-          className="mb-4 p-2"
+          className="mb-4 p-2 bg-white shadow-sm"
           {...register("service", { required: true })}
           onChange={handleServiceSelect}
         >
@@ -219,7 +329,7 @@ const FormSection = ({ services }: FormSectionProps) => {
             </option>
           ))}
         </select>
-        {errors.service && (
+        {errors.service && selectedService === "" && (
           <span className="text-red-600 text-sm -mt-4 mb-4">
             Пожалуйста, выберите одну из услуг
           </span>
@@ -228,9 +338,11 @@ const FormSection = ({ services }: FormSectionProps) => {
         {selectedService && (
           <div className="mb-4">
             <div className="">
-              <label className="tracking-wide mr-2">Выберите мастера</label>
+              <label className="tracking-wide mr-1 text-muted-foreground mb-1">
+                Выберите мастера
+              </label>
               <select
-                className="p-2"
+                className="p-2 bg-white shadow-sm"
                 {...register("master", { required: true })}
                 onChange={handleMasterSelect}
                 value={selectedMaster ? selectedMaster : ""}
@@ -252,57 +364,165 @@ const FormSection = ({ services }: FormSectionProps) => {
           </div>
         )}
 
+        {selectedMaster && !!price && (
+          <div className="mb-4 text-muted-foreground text-sm italic">
+            Стоимость услуги ~ {price} руб.
+          </div>
+        )}
+
         {selectedMaster && (
           <div>
-            <label className="tracking-wide mr-2">Выберите день</label>
+            <label className="tracking-wide mr-2 text-muted-foreground">
+              Выберите день
+            </label>
             <input
-              className="mb-4 p-2"
+              className="mb-4 p-2 bg-white shadow-sm"
               type="date"
+              min={new Date().toISOString().split("T")[0]}
+              max={
+                new Date(new Date().setMonth(new Date().getMonth() + 1))
+                  .toISOString()
+                  .split("T")[0]
+              }
               {...register("date", { required: true })}
               value={selectedDate ? selectedDate : ""}
               onChange={handleDateSelect}
             />
+            {errors.date && selectedDate === "" && (
+              <span className="text-red-600 text-sm block -mt-4 mb-4">
+                Пожалуйста, выберите один из дней
+              </span>
+            )}
           </div>
         )}
 
         {selectedDate && (
           <div>
-            <label className="tracking-wide mr-2">Выберите время</label>
+            <label className="tracking-wide mr-2 text-muted-foreground">
+              Выберите время
+            </label>
             <select
+              disabled={isLoadingSlots}
               value={selectedTime ? selectedTime : ""}
-              className="mb-4 p-2"
+              className="mb-4 p-2 bg-white shadow-sm"
               {...register("time", { required: true })}
               onChange={handleTimeSelect}
             >
-              <option value="">свободные часы</option>
+              <option value="">
+                {isLoadingSlots ? "ищем свободное время..." : "время"}
+              </option>
               {timeSlots.map((timeSlot) => (
                 <option value={timeSlot} key={timeSlot}>
                   {timeSlot}
                 </option>
               ))}
             </select>
+            {errors.time && selectedTime === "" && (
+              <span className="text-red-600 text-sm block -mt-4 mb-4">
+                Пожалуйста, выберите время для записи
+              </span>
+            )}
           </div>
         )}
+        {selectedDate && timeSlots.length === 0 && !isLoadingSlots && (
+          <p className="mb-4 text-sm text-muted-foreground">
+            Нет свободного времени. Выберите другой день.
+          </p>
+        )}
 
-        <label>Номер Вашего телефона</label>
+        <label className="text-muted-foreground mb-1">
+          Номер Вашего телефона
+        </label>
         <input
-          className="mb-4 p-2"
+          className="mb-4 p-2 bg-white shadow-sm"
           type="tel"
           {...register("phone", { required: true })}
+          value={phone ? phone : ""}
+          onChange={handlePhoneChange}
         />
-        {errors.phone && <span>phone error</span>}
+        {errors.phone && (
+          <span className="text-red-600 text-sm block -mt-4 mb-4">
+            Пожалуйста, укажите номер Вашего телефона
+          </span>
+        )}
         <input
           className="text-white bg-button/70 hover:bg-button transition-colors w-full p-4"
           type="submit"
         />
       </form>
-      {/* {bookingCreated && (
-        <div className="text-center text-white bg-success/50 transition-colors p-4">
-          Запись успешно создана! Вы записаны на
-          <span className="font-bold">{selectedService}</span> с{" "}
-          {selectedMaster}
-        </div>
-      )} */}
+
+      {/* Поп-ап для подтверждения записи */}
+
+      <Dialog open={showSubmitConfirmation}>
+        <DialogContent className="max-w-[240px] sm:max-w-lg">
+          <DialogClose
+            onClick={handleSubmitConfirmationClose}
+            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+          >
+            <Cross2Icon className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
+          <DialogHeader>
+            <LuFlower className="text-center mx-auto mb-2" size={30} />
+            <DialogTitle className="tracking-wider">
+              {bookingCreated
+                ? "Благодарим Вас за запись!"
+                : " Пожалуйста, подтвердите запись"}
+            </DialogTitle>
+            <hr className="my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-black to-transparent opacity-25 dark:via-neutral-400" />
+            <DialogDescription>
+              <p className="text-base">
+                {confirmationInfo?.service}, мастер {confirmationInfo?.master}
+              </p>
+              <p className="mt-1 mb-2 text-lg text-black bg-button/30">
+                {!!confirmationInfo?.date && formatDate(confirmationInfo.date)}{" "}
+                в {confirmationInfo?.time}
+              </p>
+              <p>
+                Длительность:
+                {selectedServiceInfo?.duration_in_minutes! > 60
+                  ? ` ${selectedServiceInfo?.duration_in_minutes! / 60} ч`
+                  : ` ${selectedServiceInfo?.duration_in_minutes} минут`}
+              </p>
+              <p>Стоимость: ~ {price} руб.</p>
+              <p>Ваш номер телефона: {confirmationInfo?.phone}</p>
+              {bookingCreated && (
+                <p className="mt-2 text-base text-foreground bg-button">
+                  Мы свяжемся с Вами в ближайшее время для подтверждения брони!
+                </p>
+              )}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            {bookingCreated ? (
+              <Button
+                onClick={handleSubmitConfirmationClose}
+                className="bg-white text-black hover:bg-white/55"
+              >
+                Закрыть
+              </Button>
+            ) : (
+              <div className="flex flex-col gap-2">
+                <Button
+                  onClick={handleSubmitConfirmationClose}
+                  className="bg-white text-black hover:bg-white/55"
+                  disabled={isLoadingConfirmation}
+                >
+                  Отмена
+                </Button>
+                <Button
+                  onClick={handleSubmitConfirmationConfirm}
+                  className="bg-button hover:bg-purple-700 mb-2"
+                >
+                  {isLoadingConfirmation
+                    ? "Подождите, загрузка может занять некоторое время..."
+                    : "Записаться"}
+                </Button>
+              </div>
+            )}
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

@@ -11,21 +11,21 @@ const HeaderNav = () => {
       href: "#services",
       active: pathname.includes("services"),
     },
-    {
-      label: "Мастера",
-      href: "#team",
-      active: pathname.includes("team"),
-    },
+    // {
+    //   label: "Мастера",
+    //   href: "#team",
+    //   active: pathname.includes("team"),
+    // },
     {
       label: "Наши работы",
       href: "#workshop",
       active: pathname.includes("workshop"),
     },
-    {
-      label: "Наш салон",
-      href: "#about",
-      active: pathname.includes("about"),
-    },
+    // {
+    //   label: "Наш салон",
+    //   href: "#about",
+    //   active: pathname.includes("about"),
+    // },
     {
       label: "Контакты",
       href: "#contact",
@@ -36,7 +36,7 @@ const HeaderNav = () => {
   return (
     <div>
       <nav>
-        <ul className="hidden md:flex gap-6">
+        <ul className="hidden sm:flex gap-6">
           {NavLinks.map((link) => (
             <li key={link.href}>
               <a

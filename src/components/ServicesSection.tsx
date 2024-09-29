@@ -7,53 +7,61 @@ const ServicesSection = () => {
       description:
         "Классический френч, оздоровительный японский, гель-лак или наращивание — широкий выбор цветов и материалов",
       image: "/images/works/nails2.jpg",
+      price: "1000-4000 руб.",
     },
     {
       title: "Педикюр",
       description:
         "Уход за кожей стоп, очистка ногтевой пластины с удалением кутикулы, обработкой питательными маслами, покрытием лечебным или декоративным лаком",
       image: "images/works/pedicure1.jpeg",
+      price: "800-3000 руб.",
     },
     {
       title: "Стрижка и окрашивание",
       description:
         "Подчеркнуть индивидуальность, избавиться от седины, выделить достоинства внешности можно благодаря грамотному окрашиванию и стрижке волос",
       image: "/images/works/hair5.jpg",
+      price: "700-2000 руб.",
     },
     {
       title: "Укладка волос",
       description:
         "Укладки на волосы любой длины, плетение кос, формирование локонов, укладки с декором и аксессуарами на любой случай",
       image: "/images/works/hair4.jpg",
+      price: "700-1200 руб.",
     },
     {
       title: "Макияж",
       description:
         "Макияж на любой случай — легкий дневной или вечерний, для свадьбы или тематической вечеринки. Включает в себя увлажнение кожи, выполняется качественными, профессиональными средствами",
       image: "/images/works/makeup6.jpg",
+      price: "700-1500 руб.",
     },
     {
       title: "Образ: макияж + прическа",
       description:
         "Законченный, индивидуально подобранный образ, подчеркивающий Ваши достоинства и индивидуальность, на любой случай - свадьба, вечеринка или деловая встреча",
       image: "/images/works/makeup8.jpg",
+      price: "2500-4000 руб.",
     },
     {
       title: "Ресницы",
       description:
         "Наращивание, окрашивание или ламинирование, выполняется в различных техниках, подчеркнет красоту Ваших глаз и позволит забыть о туши",
       image: "/images/works/lashes2.jpg",
+      price: "1000-3000 руб.",
     },
     {
       title: "Брови",
       description:
         "Ламинирование, окрашивание, долгосрочная укладка и уход подчеркнут естественную красоту Ваших бровей. Подберем цвет и форму, подходящие именно к Вашим чертам лица",
       image: "/images/works/brows1.jpg",
+      price: "700-2000 руб.",
     },
   ];
 
   return (
-    <div className="py-4 px-8 bg-background">
+    <div id="services" className="py-4 px-8">
       <LuFlower className="text-center mx-auto mb-8" size={36} />
       <p className="italic text-xl leading-tight max-w-[60%] text-center mx-auto mb-10">
         «В девушке должны быть красивы две вещи —{" "}
@@ -73,7 +81,7 @@ const ServicesSection = () => {
           {services.map((service) => (
             <li
               key={service.title}
-              className="max-w-96 sm:max-w-72 p-6 shadow-sm rounded-lg bg-card justify-self-center"
+              className="relative max-w-96 sm:max-w-72 p-6 shadow-sm rounded-lg bg-card justify-self-center"
             >
               <img
                 className="object-cover aspect-[4/3] sm:aspect-square mb-5"
@@ -84,6 +92,9 @@ const ServicesSection = () => {
                 {service.title}
               </h3>
               <p className="leading-tight text-sm">{service.description}</p>
+              <p className="text-sm font-medium text-white tracking-wider p-1 bg-button absolute -bottom-2 -right-2">
+                {service.price}
+              </p>
             </li>
           ))}
         </ul>
