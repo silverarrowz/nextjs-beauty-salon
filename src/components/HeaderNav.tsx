@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 
 const HeaderNav = () => {
@@ -40,7 +41,12 @@ const HeaderNav = () => {
           {NavLinks.map((link) => (
             <li key={link.href}>
               <a
-                className="text-sm tracking-wider hover:underline hover:underline-offset-4 hover:bg-button/30 transition-colors"
+                className={cn(
+                  "text-sm tracking-wider hover:underline hover:underline-offset-4 hover:bg-button/30 transition-colors",
+                  {
+                    "bg-button": link.active,
+                  }
+                )}
                 href={link.href}
               >
                 {link.label}

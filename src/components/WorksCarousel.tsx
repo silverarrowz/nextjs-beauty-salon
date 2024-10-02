@@ -56,7 +56,7 @@ const WorksCarousel = () => {
               stopOnInteraction: false,
             }),
           ]}
-          className="max-w-[80%] md:max-w-[90%] xl:max-w-full relative"
+          className="max-w-[70%] sm:max-w-[80%] md:max-w-[90%] xl:max-w-full relative"
         >
           <CarouselContent>
             {worksPhotos.map((photo, index) => (

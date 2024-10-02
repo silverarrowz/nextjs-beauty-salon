@@ -1,9 +1,21 @@
+import { cn } from "@/lib/utils";
+
 interface ContainerProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-const Container = ({ children }: ContainerProps) => {
-  return <div className="max-w-screen-lg mx-auto px-4">{children}</div>;
+const Container = ({ children, className }: ContainerProps) => {
+  return (
+    <div
+      className={cn(
+        "max-w-screen-lg mx-auto px-4 overflow-hidden relative",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Container;

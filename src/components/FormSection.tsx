@@ -71,6 +71,11 @@ const generateTimeSlots = (
   });
 
   const availableTimeSlots = allTimeSlots.filter((slot) => {
+    const currentDate = new Date();
+    const nearestAvailableDate = new Date(
+      currentDate.setMinutes(currentDate.getMinutes() + interval)
+    );
+
     const slotStart = new Date(date);
     const [hours, minutes] = slot.split(":").map(Number);
     slotStart.setHours(hours, minutes, 0, 0);
@@ -90,7 +95,7 @@ const generateTimeSlots = (
         return false;
       }
     }
-    return slotEnd <= shiftEnd;
+    return slotEnd <= shiftEnd && slotStart > nearestAvailableDate;
   });
   return availableTimeSlots;
 };
@@ -148,6 +153,8 @@ const FormSection = ({ services }: FormSectionProps) => {
           booking_date: new Date(`${data.date}T${data.time}:00`).toISOString(),
           master_id: parseInt(data.master),
           service_id: parseInt(data.service),
+          client: data.phone,
+          price: parseInt(price!),
         },
       ])
       .select();
@@ -160,8 +167,8 @@ const FormSection = ({ services }: FormSectionProps) => {
       setbookingCreated(true);
     }
     setIsLoadingConfirmation(false);
-    setSelectedMaster(null);
-    setSelectedService(null);
+    setSelectedMaster("");
+    setSelectedService("");
     setSelectedDate("");
     setSelectedTime("");
     setTimeSlots([]);
@@ -284,7 +291,9 @@ const FormSection = ({ services }: FormSectionProps) => {
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value.replace(/\D/g, "");
-    if (input.length > 1 && input.length <= 4) {
+    if (input.length === 1) {
+      input = `+${input}`;
+    } else if (input.length > 1 && input.length <= 4) {
       input = `+${input.slice(0, 1)} (${input.slice(1)}`;
     } else if (input.length > 4 && input.length <= 7) {
       input = `+${input.slice(0, 1)} (${input.slice(1, 4)}) ${input.slice(4)}`;
@@ -356,7 +365,7 @@ const FormSection = ({ services }: FormSectionProps) => {
               </select>
             </div>
 
-            {errors.master && (
+            {errors.master && selectedMaster === "" && (
               <span className="text-red-600 text-sm">
                 Пожалуйста, выберите одного из мастеров
               </span>
@@ -430,7 +439,7 @@ const FormSection = ({ services }: FormSectionProps) => {
           </p>
         )}
 
-        <label className="text-muted-foreground mb-1">
+        <label className="tracking-wide text-muted-foreground mb-1">
           Номер Вашего телефона
         </label>
         <input
@@ -446,15 +455,16 @@ const FormSection = ({ services }: FormSectionProps) => {
           </span>
         )}
         <input
-          className="text-white bg-button/70 hover:bg-button transition-colors w-full p-4"
+          className="cursor-pointer text-white bg-button/70 hover:bg-button transition-colors w-full p-4"
           type="submit"
+          value={"Записаться"}
         />
       </form>
 
       {/* Поп-ап для подтверждения записи */}
 
       <Dialog open={showSubmitConfirmation}>
-        <DialogContent className="max-w-[240px] sm:max-w-lg">
+        <DialogContent className="max-w-[320px] sm:max-w-lg">
           <DialogClose
             onClick={handleSubmitConfirmationClose}
             className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
@@ -514,9 +524,7 @@ const FormSection = ({ services }: FormSectionProps) => {
                   onClick={handleSubmitConfirmationConfirm}
                   className="bg-button hover:bg-purple-700 mb-2"
                 >
-                  {isLoadingConfirmation
-                    ? "Подождите, загрузка может занять некоторое время..."
-                    : "Записаться"}
+                  {isLoadingConfirmation ? "Загрузка..." : "Записаться"}
                 </Button>
               </div>
             )}

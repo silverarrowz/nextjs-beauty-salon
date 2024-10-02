@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import "./globals.css";
-import Container from "@/components/Container";
 
 const font = Lora({ weight: "400", subsets: ["latin"] });
 
@@ -17,11 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>
-        <div className="grainy-light">
-          <Container>{children}</Container>
-        </div>
-      </body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }
