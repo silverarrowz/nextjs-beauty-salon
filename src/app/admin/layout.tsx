@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Sidebar from "./components/Sidebar";
 import React from "react";
+import Footer from "./components/Footer";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const supabase = createClient();
@@ -19,11 +20,12 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
         <Header user={data.user} />
         <div className="mb-12 mt-20 flex">
           <Sidebar />
-          <div className="grainy-light w-full h-full p-4 md:ml-32 rounded-lg">
+          <div className="bg-zinc-50 w-full h-auto min-h-screen p-4 md:ml-32 rounded-lg">
             {children}
           </div>
         </div>
       </Container>
+      <Footer />
     </div>
   );
 };

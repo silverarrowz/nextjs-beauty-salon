@@ -14,20 +14,12 @@ import { ru } from "date-fns/locale";
 const Page = () => {
   const supabase = createClient();
 
-  // Записи будут за период (месяц), т.е. с первого дня месяца по сегодняшний
-  // Можно добавить функцию выбора периода (предыдущий месяц, любой другой месяц, год и т.д.)
-
   const firstDayOfMonth = new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
     1
   );
   const currentDate = new Date();
-
-  // const currentPeriodDisplay = new Intl.DateTimeFormat("ru-RU", {
-  //   month: "long",
-  //   year: "numeric",
-  // }).format(currentDate);
 
   const fetchBookings = async (startDate: Date, endDate: Date) => {
     setIsLoading(true);
@@ -38,7 +30,6 @@ const Page = () => {
       )
       .gte("booking_date", `${startDate.toISOString()}`)
       .lt("booking_date", `${endDate.toISOString()}`)
-      .limit(20)
 
       .order("id", { ascending: false });
     setBookings(data!);
@@ -60,6 +51,15 @@ const Page = () => {
   const [bookings, setBookings] = useState<any[]>([]);
   const [periodSelectOpen, setPeriodSelectOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleDateInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedPeriod([
+      {
+        ...selectedPeriod[0],
+        [e.target.name]: new Date(e.target.value),
+      },
+    ]);
+  };
 
   const handlePeriodSelectClick = () => {
     setPeriodSelectOpen(!periodSelectOpen);
@@ -136,8 +136,8 @@ const Page = () => {
   TableCell.displayName = "TableCell";
 
   return (
-    <div className="px-4">
-      <div className="flex items-baseline justify-between mb-4">
+    <div className="p-4 sm:px-6 bg-zinc-50">
+      <div className="flex flex-col lg:flex-row items-center lg:items-baseline gap-4 justify-between mb-4">
         <h2>
           Записи за период{" "}
           <button
@@ -149,10 +149,11 @@ const Page = () => {
             )} по ${selectedPeriod[0].endDate.toLocaleDateString("ru-RU")}`}
           </button>
         </h2>
+
         {periodSelectOpen && (
-          <div className="flex gap-2">
+          <div className="flex gap-4">
             <button
-              className="text-sm hover:text-muted-foreground"
+              className="text-sm tracking-tighter uppercase hover:text-muted-foreground"
               onClick={() => {
                 setPeriodSelectOpen(false);
                 setSelectedPeriod([
@@ -167,97 +168,137 @@ const Page = () => {
               Отменить
             </button>
             <button
-              className="text-sm leading-none border p-2 bg-white hover:bg-zinc-100 rounded-sm"
+              className="text-sm tracking-tighter uppercase leading-none p-2 bg-amber-200 hover:bg-amber-300 rounded-sm hidden sm:block"
               onClick={handlePeriodSelectSave}
             >
               Показать записи за выбранный период
+            </button>
+            <button
+              className="text-sm tracking-tighter uppercase leading-none p-2 bg-amber-200 hover:bg-amber-300 rounded-sm sm:hidden"
+              onClick={handlePeriodSelectSave}
+            >
+              Показать записи
             </button>
           </div>
         )}
       </div>
 
       {periodSelectOpen && (
-        <DateRangePicker
-          className="max-w-[600px] mb-4"
-          locale={ru}
-          months={2}
-          weekStartsOn={1}
-          moveRangeOnFirstSelection={false}
-          onChange={(item) => setSelectedPeriod([item.selection])}
-          ranges={selectedPeriod}
-          direction={"horizontal"}
-          showPreview={true}
-        />
+        <div className="hidden sm:block mb-4 rounded-sm overflow-hidden max-w-[520px] max-h-[580px]">
+          <DateRangePicker
+            className="w-full"
+            locale={ru}
+            months={2}
+            weekStartsOn={1}
+            moveRangeOnFirstSelection={false}
+            onChange={(item) => setSelectedPeriod([item.selection])}
+            ranges={selectedPeriod}
+            showPreview={true}
+          />
+        </div>
+      )}
+      {periodSelectOpen && (
+        <div className="sm:hidden text-sm mb-4 flex flex-col items-center gap-2">
+          <label className="">
+            Начало
+            <input
+              type="date"
+              name="startDate"
+              value={selectedPeriod[0].startDate.toISOString().slice(0, 10)}
+              onChange={handleDateInputChange}
+              className="ml-2 p-1 border rounded-sm"
+            />
+          </label>
+
+          <label className="">
+            Конец
+            <input
+              type="date"
+              name="endDate"
+              value={selectedPeriod[0].endDate.toISOString().slice(0, 10)}
+              onChange={handleDateInputChange}
+              className="ml-2 p-1 border rounded-sm"
+            />
+          </label>
+        </div>
       )}
       {editorOpen && (
         <div className="rounded-md shadow-sm mb-4 p-2">
           <form
             onSubmit={handleSubmit}
-            className="flex gap-4 items-center tracking-tight text-sm"
+            className="tracking-tight text-sm flex flex-col sm:flex-row sm:justify-between items-center"
           >
-            <p className="text-lg">ID: {editorValues?.id}</p>
-            <label>
-              Цена
-              <input
-                className="ml-2 py-1 px-2 rounded-sm border max-w-24"
-                value={editorValues?.price}
-                onChange={handlePriceChange}
-                type="number"
-              />
-            </label>
-            <label className="text-center inline-flex items-center">
-              Оплачено
-              <input
-                className="ml-2 p-2"
-                type="checkbox"
-                checked={editorValues?.paid}
-                onChange={handlePaidChange}
-              />
-            </label>
-            <button
-              className="bg-button/40 hover:bg-button transition-colors py-1 px-2 rounded-sm"
-              type="submit"
-            >
-              Сохранить
-            </button>
-            <button
-              onClick={() => {
-                setEditorOpen(false);
-                setEditorValues(null);
-              }}
-            >
-              Отменить
-            </button>
+            <div className="flex gap-4 mb-4 sm:mb-0">
+              <p className="text-lg">ID: {editorValues?.id}</p>
+              <label>
+                Цена
+                <input
+                  className="ml-2 py-1 px-2 rounded-sm border max-w-24"
+                  value={editorValues?.price}
+                  onChange={handlePriceChange}
+                  type="number"
+                />
+              </label>
+              <label className="text-center inline-flex items-center">
+                Оплачено
+                <input
+                  className="ml-2 p-2"
+                  type="checkbox"
+                  checked={editorValues?.paid}
+                  onChange={handlePaidChange}
+                />
+              </label>
+            </div>
+            <div className="flex gap-4 justify-center">
+              <button
+                className="uppercase bg-button/40 hover:bg-button transition-colors py-1 px-2 rounded-sm"
+                type="submit"
+              >
+                Сохранить
+              </button>
+              <button
+                onClick={() => {
+                  setEditorOpen(false);
+                  setEditorValues(null);
+                }}
+                className="uppercase"
+              >
+                Отменить
+              </button>
+            </div>
           </form>
         </div>
       )}
+
       <div className="overflow-scroll max-h-[500px]">
         <table className="w-full text-left">
           <thead>
-            <tr>
-              <TableCell className="font-normal uppercase text-sm"></TableCell>
-              <TableCell className="font-normal uppercase text-sm">
+            <tr className="text-center">
+              <TableCell className="font-extrabold uppercase text-sm"></TableCell>
+              <TableCell className="font-extrabold uppercase text-sm">
                 Дата
               </TableCell>
-              <TableCell className="font-normal uppercase text-sm">
+              <TableCell className="font-extrabold uppercase text-sm">
                 Время
               </TableCell>
-              <TableCell className="font-normal uppercase text-sm">
+              <TableCell className="font-extrabold uppercase text-sm">
                 Мастер
               </TableCell>
-              <TableCell className="font-normal uppercase text-sm">
+              <TableCell className="font-extrabold uppercase text-sm">
                 Услуга
               </TableCell>
-              <TableCell className="font-normal uppercase text-sm">
+              <TableCell className="font-extrabold uppercase text-sm">
                 Клиент
               </TableCell>
-              <TableCell className="font-normal uppercase text-sm">
+              <TableCell className="font-extrabold uppercase text-sm">
                 Цена, руб.
               </TableCell>
-              <TableCell className="font-normal uppercase text-sm">
+              <TableCell className="font-extrabold uppercase text-sm">
                 Оплачено
               </TableCell>
-              <TableCell>ID</TableCell>
+              <TableCell className="font-extrabold uppercase text-sm">
+                ID
+              </TableCell>
             </tr>
           </thead>
           <tbody>

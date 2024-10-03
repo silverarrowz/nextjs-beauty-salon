@@ -347,11 +347,11 @@ const FormSection = ({ services }: FormSectionProps) => {
         {selectedService && (
           <div className="mb-4">
             <div className="">
-              <label className="tracking-wide mr-1 text-muted-foreground mb-1">
+              <label className="tracking-wide text-muted-foreground mb-1">
                 Выберите мастера
               </label>
               <select
-                className="p-2 bg-white shadow-sm"
+                className="p-2 bg-white shadow-sm block w-full"
                 {...register("master", { required: true })}
                 onChange={handleMasterSelect}
                 value={selectedMaster ? selectedMaster : ""}
