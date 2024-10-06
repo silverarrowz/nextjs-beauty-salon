@@ -17,9 +17,9 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="w-[140px] hidden md:block fixed left-0 top-0 z-50 pt-6 pl-4 xl:ml-32 h-full bg-button">
+    <aside className="w-[140px] hidden md:block fixed left-0 top-0 z-40 pt-6 pl-4 xl:pl-8  bg-button ">
       <Link href="/">
-        <h2 className="text-xl hover:text-pink-700 tracking-tighter leading-none mb-12">
+        <h2 className="text-xl hover:text-pink-700 tracking-tighter leading-none mb-12 pl-6 xl:-ml-4">
           Гомбрайх
         </h2>
       </Link>
@@ -28,11 +28,14 @@ const Sidebar = () => {
           {sections.map((section) => (
             <li
               key={section.label}
-              className={cn("p-1 mr-4 hover:text-pink-700 transition", {
-                "bg-white tracking-widest hover:text-black": pathname.includes(
-                  section.href
-                ),
-              })}
+              className={cn(
+                "p-1 mr-4 xl:-ml-4 tracking-widest hover:text-pink-700 transition underline  underline-offset-2 decoration-pink-700 decoration-2 hover:no-underline",
+                {
+                  "bg-white  hover:text-black no-underline": pathname.includes(
+                    section.href
+                  ),
+                }
+              )}
             >
               <Link href={section.href}>
                 <p className="flex items-center gap-2">

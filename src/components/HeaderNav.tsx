@@ -42,7 +42,7 @@ const HeaderNav = () => {
             <li key={link.href}>
               <a
                 className={cn(
-                  "text-sm tracking-wider hover:underline hover:underline-offset-4 hover:bg-button/30 transition-colors",
+                  "text-sm tracking-wider hover:text-button transition-colors",
                   {
                     "bg-button": link.active,
                   }

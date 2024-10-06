@@ -1,6 +1,17 @@
+"use client";
+
 import { LuFlower } from "react-icons/lu";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const ServicesSection = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+    });
+  }, []);
+
   const services = [
     {
       title: "Маникюр",
@@ -61,7 +72,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <div id="services" className="py-4 px-8">
+    <div id="services" className="pb-4 pt-2 px-8">
       <LuFlower className="text-center mx-auto mb-8" size={36} />
       <p className="italic text-xl leading-tight max-w-[60%] text-center mx-auto mb-10">
         «В девушке должны быть красивы две вещи —{" "}
@@ -81,10 +92,10 @@ const ServicesSection = () => {
           {services.map((service) => (
             <li
               key={service.title}
-              className="relative max-w-96 sm:max-w-72 p-6 shadow-sm rounded-lg bg-card justify-self-center"
+              className="relative max-w-96 sm:max-w-72 p-6 shadow-sm bg-card justify-self-center "
             >
               <img
-                className="object-cover aspect-[4/3] sm:aspect-square mb-5"
+                className="object-cover aspect-[4/3] sm:aspect-square mb-5 hover:scale-105 transition-transform"
                 src={service.image}
                 alt={service.title}
               />

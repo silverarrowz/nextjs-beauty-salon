@@ -5,13 +5,13 @@ import Link from "next/link";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="min-h-56 bg-button pb-6 pt-4 lg:-mx-0 flex flex-col text-center justify-center items-center gap-4">
-      <div className="text-accent tracking-widest flex flex-col sm:flex-row gap-1 sm:gap-2 items-center mb-4">
+    <footer className="min-h-56 bg-button pb-6 pt-4 px-12 flex flex-col text-center justify-center items-center gap-4 z-50">
+      <div className="text-accent tracking-widest flex flex-col md:flex-row gap-1 sm:gap-2 items-center mb-4">
         <p>
-          9:00-20:00 <span className="hidden sm:inline"> |</span>
+          9:00-20:00 <span className="hidden md:inline"> |</span>
         </p>
         <p>
-          gombreichsalon@yandex.ru <span className="hidden sm:inline"> |</span>
+          gombreichsalon@yandex.ru <span className="hidden md:inline"> |</span>
         </p>
         <p>+7 (939) 796-48-99</p>
       </div>

@@ -14,8 +14,11 @@ import {
 } from "./ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { Button } from "./ui/button";
+
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { LuFlower, LuFlower2 } from "react-icons/lu";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export type FormValues = {
   service: string;
@@ -105,6 +108,12 @@ interface FormSectionProps {
 }
 
 const FormSection = ({ services }: FormSectionProps) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+    });
+  }, []);
+
   const {
     register,
     unregister,
@@ -313,7 +322,10 @@ const FormSection = ({ services }: FormSectionProps) => {
     >
       <LuFlower2 className="text-center mx-auto mb-8" size={36} />
 
-      <h2 className="text-xl sm:text-2xl font-thin tracking-widest text-center mb-6">
+      <h2
+        data-aos="fade-up"
+        className="text-xl sm:text-2xl font-thin tracking-widest text-center mb-6"
+      >
         Запишитесь прямо сейчас{" "}
         <span className="bg-button">на любое удобное&nbsp;время!</span>
       </h2>
@@ -321,7 +333,7 @@ const FormSection = ({ services }: FormSectionProps) => {
 
       <form
         onSubmit={handleSubmit(handleSubmitConfirmation)}
-        className="flex flex-col w-96 border bg-neutral-100 shadow-sm p-6"
+        className="flex flex-col w-64 sm:w-96 border bg-zinc-200 shadow-sm p-4 sm:p-6"
       >
         <label className="tracking-wide text-muted-foreground mb-1">
           Выберите услугу
@@ -455,7 +467,7 @@ const FormSection = ({ services }: FormSectionProps) => {
           </span>
         )}
         <input
-          className="cursor-pointer text-white bg-button/70 hover:bg-button transition-colors w-full p-4"
+          className="cursor-pointer shadow-sm hover:text-white bg-button-light hover:bg-button transition-colors w-full p-4"
           type="submit"
           value={"Записаться"}
         />

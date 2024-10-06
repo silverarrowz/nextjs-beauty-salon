@@ -12,16 +12,17 @@ export default async function Home() {
   const ServicesWithMasters = await getServices();
 
   return (
-    <div className="grainy-light">
+    <div className="test">
       <Container>
         <Header />
-        <IntroSection />
-        <WorksCarousel />
+      </Container>
+      <IntroSection />
+      <WorksCarousel />
+      <Container>
         <ServicesSection />
         <FormSection services={ServicesWithMasters} />
-        <ContactsSection />
       </Container>
-
+      <ContactsSection />
       <FooterSection />
     </div>
   );

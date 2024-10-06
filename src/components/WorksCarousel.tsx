@@ -56,7 +56,7 @@ const WorksCarousel = () => {
               stopOnInteraction: false,
             }),
           ]}
-          className="max-w-[70%] sm:max-w-[80%] md:max-w-[90%] xl:max-w-full relative"
+          className="max-w-[70%] sm:max-w-[80%] md:max-w-[82%] l:max-w-[90%] xl:max-w-[82%] relative"
         >
           <CarouselContent>
             {worksPhotos.map((photo, index) => (
@@ -69,8 +69,8 @@ const WorksCarousel = () => {
             ))}
           </CarouselContent>
 
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious variant={"ghost"} />
+          <CarouselNext variant={"ghost"} />
         </Carousel>
       </div>
       <h3 className="text-center italic text-muted-foreground text-sm">

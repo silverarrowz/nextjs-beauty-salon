@@ -18,14 +18,14 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     <div className="bg-button h-auto min-h-screen">
       <Container className="bg-button">
         <Header user={data.user} />
-        <div className="mb-12 mt-20 flex">
+        <div className="mb-6 mt-20 flex">
           <Sidebar />
-          <div className="bg-zinc-50 w-full h-auto min-h-screen p-4 md:ml-32 rounded-lg">
+          <div className="bg-button w-full h-auto min-h-screen p-4 md:ml-32 rounded-sm">
             {children}
           </div>
         </div>
+        <Footer />
       </Container>
-      <Footer />
     </div>
   );
 };
