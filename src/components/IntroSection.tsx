@@ -16,7 +16,7 @@ const IntroSection = () => {
     <div className="mb-12 mt-32 max-w-[860px] xl:max-w-screen-lg 2xl:max-w-screen-xl mx-auto transition-all">
       <IntroCarousel />
       <div className="max-w-screen-lg mx-4 xl:mx-auto">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-light pt-8 pb-12 leading-tight md:leading-relaxed">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-light pt-8 pb-12 leading-tight sm:leading-relaxed md:leading-loose">
           Гомбрайх —{" "}
           <span className="bg-card italic tracking-wider">
             пространство красоты

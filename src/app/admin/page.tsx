@@ -276,7 +276,7 @@ export default function Page() {
                 {mastersSumIncome!.map((master, index) => (
                   <tr
                     key={index}
-                    className="hover:bg-amber-200 transition-colors even:bg-amber-50"
+                    className="hover:bg-button-light first:bg-amber-200 transition-colors even:bg-amber-50"
                   >
                     <td className="border-slate-400 px-3 py-2 text-sm text-left">
                       {index + 1}

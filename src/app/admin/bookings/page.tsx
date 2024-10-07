@@ -11,16 +11,7 @@ import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
 import { ru } from "date-fns/locale";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 const Page = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 500,
-    });
-  }, []);
-
   const supabase = createClient();
 
   const firstDayOfMonth = new Date(

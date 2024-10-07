@@ -1,49 +1,11 @@
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "./ui/button";
 import { FaInstagram } from "react-icons/fa6";
 import { FaVk } from "react-icons/fa";
 import Link from "next/link";
 
-const FooterSection = () => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="min-h-56 bg-light py-6  lg:-mx-0 flex flex-col text-center justify-center items-center gap-4">
-      <nav className="flex flex-col sm:flex-row gap-3 items-center justify-center tracking-widest">
-        <a
-          href="#services"
-          className="hover:underline hover:bg-button-light decoration-1 underline-offset-4"
-        >
-          Услуги
-        </a>
-        <a
-          href="#workshop"
-          className="hover:underline hover:bg-button-light decoration-1 underline-offset-4"
-        >
-          Наши работы
-        </a>
-        <a
-          href="#contact"
-          className="hover:underline hover:bg-button-light decoration-1 underline-offset-4"
-        >
-          Контакты
-        </a>
-        <a
-          href="/login"
-          className="hover:underline hover:bg-button-light decoration-1 underline-offset-4"
-        >
-          Вход для админов
-        </a>
-      </nav>
-      <a
-        href="#form"
-        className={cn(
-          buttonVariants(),
-          "text-base tracking-wider rounded-none hover:bg-button-light border-black hover:text-black box-border"
-        )}
-      >
-        Записаться онлайн
-      </a>
-
       <div className="tracking-widest flex flex-col sm:flex-row gap-1 sm:gap-2 items-center mb-4">
         <p>
           9:00-20:00 <span className="hidden sm:inline"> |</span>
@@ -81,4 +43,4 @@ const FooterSection = () => {
   );
 };
 
-export default FooterSection;
+export default Footer;

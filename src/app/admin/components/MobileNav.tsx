@@ -1,4 +1,9 @@
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { IoSparkles } from "react-icons/io5";
@@ -25,12 +30,15 @@ const MobileNav = () => {
                   key={section.label}
                   className="p-1 mr-4 xl:-ml-4 tracking-widest hover:text-pink-700 transition underline  underline-offset-2 decoration-pink-700 decoration-2 hover:no-underline"
                 >
-                  <Link href={section.href}>
-                    <p className="flex items-center gap-2">
-                      {section.icon}
-                      {section.label}
-                    </p>
-                  </Link>
+                  {" "}
+                  <SheetClose asChild>
+                    <Link href={section.href}>
+                      <p className="flex items-center gap-2">
+                        {section.icon}
+                        {section.label}
+                      </p>
+                    </Link>
+                  </SheetClose>
                 </li>
               ))}
             </ul>

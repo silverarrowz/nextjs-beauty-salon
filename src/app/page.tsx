@@ -7,12 +7,13 @@ import getServices from "../../actions/getServices";
 import FooterSection from "@/components/FooterSection";
 import ContactsSection from "@/components/ContactsSection";
 import Container from "@/components/Container";
+import ScrollButton from "@/components/ScrollButton";
 
 export default async function Home() {
   const ServicesWithMasters = await getServices();
 
   return (
-    <div className="test">
+    <div className="bg-light">
       <Container>
         <Header />
       </Container>
@@ -24,6 +25,7 @@ export default async function Home() {
       </Container>
       <ContactsSection />
       <FooterSection />
+      <ScrollButton />
     </div>
   );
 }
