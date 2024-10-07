@@ -92,6 +92,15 @@ export default function Page() {
     setIsLoading(false);
   };
 
+  type BookingPriceAndMaster = {
+    price: number;
+    masters:
+      | {
+          name: string;
+        }
+      | { name: string }[];
+  };
+
   const fetchMastersIncome = async (startDate: Date, endDate: Date) => {
     setIsLoading(true);
     const { data, error } = await supabase
@@ -102,24 +111,30 @@ export default function Page() {
       .lt("booking_date", `${endDate.toISOString()}`);
     setIsLoading(false);
 
-    // TODO: вывести сумму дохода для каждого мастера за текущий период
-
     let mastersIncome: { master: string; income: number }[] = [];
     if (data?.length! > 0) {
-      data?.forEach((booking) => {
-        const masterIncome = mastersIncome.find(
-          (m) => m.master === booking.masters.name
-        );
+      data?.forEach((booking: BookingPriceAndMaster) => {
+        let masterName: string;
+
+        if (Array.isArray(booking.masters)) {
+          masterName = booking.masters[0].name;
+        } else {
+          masterName = booking.masters.name;
+        }
+
+        const masterIncome = mastersIncome.find((m) => m.master === masterName);
         if (masterIncome) {
           masterIncome.income += booking.price;
         } else {
           mastersIncome.push({
-            master: booking.masters.name,
+            master: masterName,
             income: booking.price,
           });
         }
       });
     }
+
+    console.log(data);
 
     return mastersIncome;
   };

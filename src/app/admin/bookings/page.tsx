@@ -194,6 +194,7 @@ const Page = () => {
               months={2}
               weekStartsOn={1}
               moveRangeOnFirstSelection={false}
+              // @ts-expect-error
               onChange={(item) => setSelectedPeriod([item.selection])}
               ranges={selectedPeriod}
               showPreview={true}
