@@ -76,7 +76,8 @@ const IntroCarousel = () => {
                 className="flex gap-1 text-sm lg:gap-2 items-center justify-center lg:absolute
                top-1/2 right-52 w-full sm:w-auto sm:mx-auto lg:text-lg bg-button-light
                 hover:translate-y-[-5%] lg:hover:translate-y-0 lg:hover:translate-x-4
-                hover:text-white transition-all duration-300 uppercase shadow-md p-2 sm:p-4 z-40 mb-6 lg:mb-0"
+                hover:text-pink-800 transition-all duration-300 uppercase shadow-md p-2
+                 sm:p-4 z-40 mb-6 lg:mb-0"
               >
                 Получить скидку <LuFlower size={24} />
               </button>
@@ -108,8 +109,9 @@ const IntroCarousel = () => {
                 className="flex gap-2 text-base items-center justify-center mx-auto w-auto 
                 text-center lg:absolute -mt-12 lg:mt-0 sm:text-lg
                 lg:top-1/2 lg:right-52 bg-white text-pink-950
-                hover:-translate-y-1 lg:hover:translate-y-0 lg:hover:translate-x-4 hover:bg-black
-                 hover:text-white
+                hover:-translate-y-1 lg:hover:translate-y-0 lg:hover:translate-x-4
+                 hover:text-pink-800
+                
                 transition uppercase shadow-md p-4 z-40"
               >
                 Записаться <span className="hidden sm:inline">онлайн</span>{" "}
@@ -181,7 +183,7 @@ const IntroCarousel = () => {
               <button
                 className="w-full sm:w-fit text-center mx-auto lg:mx-0 lg:w-auto
                  text-base sm:text-lg bg-button-light hover:italic hover:translate-y-[-5%]
-                 lg:hover:translate-y-0 lg:hover:translate-x-4 hover:text-white hover:bg-black
+                 lg:hover:translate-y-0 lg:hover:translate-x-4 hover:text-white hover:bg-pink-950
                  transition uppercase shadow-md p-3 sm:p-4 xl:p-8 z-40 mb-6 lg:mb-0"
               >
                 Записаться

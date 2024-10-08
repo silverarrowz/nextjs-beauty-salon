@@ -351,7 +351,7 @@ const FormSection = ({ services }: FormSectionProps) => {
           ))}
         </select>
         {errors.service && selectedService === "" && (
-          <span className="text-red-600 text-sm -mt-4 mb-4">
+          <span className="text-red-800 text-sm -mt-4 mb-4">
             Пожалуйста, выберите одну из услуг
           </span>
         )}
@@ -378,7 +378,7 @@ const FormSection = ({ services }: FormSectionProps) => {
             </div>
 
             {errors.master && selectedMaster === "" && (
-              <span className="text-red-600 text-sm">
+              <span className="text-red-800 text-sm">
                 Пожалуйста, выберите одного из мастеров
               </span>
             )}
@@ -410,7 +410,7 @@ const FormSection = ({ services }: FormSectionProps) => {
               onChange={handleDateSelect}
             />
             {errors.date && selectedDate === "" && (
-              <span className="text-red-600 text-sm block -mt-4 mb-4">
+              <span className="text-red-800 text-sm block -mt-4 mb-4">
                 Пожалуйста, выберите один из дней
               </span>
             )}
@@ -439,7 +439,7 @@ const FormSection = ({ services }: FormSectionProps) => {
               ))}
             </select>
             {errors.time && selectedTime === "" && (
-              <span className="text-red-600 text-sm block -mt-4 mb-4">
+              <span className="text-red-800 text-sm block -mt-4 mb-4">
                 Пожалуйста, выберите время для записи
               </span>
             )}
@@ -462,7 +462,7 @@ const FormSection = ({ services }: FormSectionProps) => {
           onChange={handlePhoneChange}
         />
         {errors.phone && (
-          <span className="text-red-600 text-sm block -mt-4 mb-4">
+          <span className="text-red-800 text-sm block -mt-4 mb-4">
             Пожалуйста, укажите номер Вашего телефона
           </span>
         )}

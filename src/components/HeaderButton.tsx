@@ -7,8 +7,9 @@ const HeaderButton = () => {
       href="#form"
       className={cn(
         buttonVariants(),
-        `tracking-tighter bg-pink-950 text-white hover:bg-button-light 
-         hover:text-card-foreground text-base rounded-none flex items-center`
+        `tracking-tighter bg-pink-950 text-white hover:bg-transparent 
+         hover:text-pink-950 hover:border border-pink-950
+          text-base rounded-none flex items-center`
       )}
     >
       Записаться
