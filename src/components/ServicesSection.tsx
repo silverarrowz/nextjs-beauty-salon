@@ -95,12 +95,28 @@ const ServicesSection = () => {
               className="relative max-w-96 sm:max-w-72 p-6 shadow-sm 
               bg-card justify-self-center"
             >
-              <img
-                className="object-cover aspect-[4/3] sm:aspect-square mb-5
+              <div className="relative overflow-hidden">
+                <img
+                  className="object-cover aspect-[4/3] sm:aspect-square mb-5
                  hover:scale-105 transition-transform"
-                src={service.image}
-                alt={service.title}
-              />
+                  src={service.image}
+                  alt={service.title}
+                />
+                <svg
+                  viewBox="-7.1598 281.4336 503.4325 57.82"
+                  width="150%"
+                  height="57.82px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="absolute -bottom-2 -left-4 -right-2"
+                >
+                  {" "}
+                  <path
+                    d="M 21.344 294.49 C -14.853 282.021 -1.808 300.901 -7.059 315.177 C -8.323 318.614 2.743 331.684 1.28 335.083 C 0.919 335.927 -0.012 337.671 1.28 337.722 C 21.484 338.502 41.749 337.399 61.983 337.428 C 107.873 337.496 153.761 337.755 199.648 338.015 C 240.117 338.244 280.592 338.295 321.053 338.894 C 333.356 339.076 478.909 340.181 490.462 337.303 C 499.841 307.316 496.288 291.376 490.833 282.493 C 446.543 300.094 304.511 280.291 282.198 281.486 C 239.059 283.795 197.915 297.291 155.206 303.716 C 107.245 310.93 75.385 305.784 21.344 294.49 Z"
+                    fill="#ffffff"
+                  />{" "}
+                </svg>
+              </div>
+
               <h3 className="mb-4 uppercase tracking-widest text-pink-800">
                 {service.title}
               </h3>
