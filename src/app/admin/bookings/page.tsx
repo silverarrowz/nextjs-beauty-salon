@@ -298,7 +298,7 @@ const Page = () => {
 
         <div
           data-aos="zoom-in-up"
-          className="overflow-scroll max-h-[500px] bg-zinc-50 p-4 lg:p-8 transition"
+          className="overflow-scroll max-h-[500px] bg-zinc-50 sm:p-4 lg:p-8 transition"
         >
           <table className="w-full text-left">
             <thead>
