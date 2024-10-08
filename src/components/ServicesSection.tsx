@@ -104,7 +104,7 @@ const ServicesSection = () => {
                 />
                 <svg
                   viewBox="-7.1598 281.4336 503.4325 57.82"
-                  width="150%"
+                  width="180%"
                   height="57.82px"
                   xmlns="http://www.w3.org/2000/svg"
                   className="absolute -bottom-2 -left-4 -right-2"
