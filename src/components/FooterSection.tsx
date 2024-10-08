@@ -7,7 +7,7 @@ import Link from "next/link";
 const FooterSection = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="min-h-56 bg-light py-6  lg:-mx-0 flex flex-col text-center justify-center items-center gap-4">
+    <footer className="min-h-56 bg-button-light py-8  lg:-mx-0 flex flex-col text-center justify-center items-center gap-4">
       <nav className="flex flex-col sm:flex-row gap-3 items-center justify-center tracking-widest">
         <a
           href="#services"

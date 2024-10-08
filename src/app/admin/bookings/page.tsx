@@ -189,6 +189,7 @@ const Page = () => {
         {periodSelectOpen && (
           <div className="hidden md:block mt-4 mb-12 max-w-[540px] md:max-w-[580px] max-h-[620px] bg-zinc-50 p-4">
             <DateRangePicker
+              // TODO: найти способ перевести календарь на русский
               className="w-full"
               locale={ru}
               months={2}

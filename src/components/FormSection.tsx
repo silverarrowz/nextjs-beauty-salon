@@ -333,13 +333,13 @@ const FormSection = ({ services }: FormSectionProps) => {
 
       <form
         onSubmit={handleSubmit(handleSubmitConfirmation)}
-        className="flex flex-col w-72 sm:w-96 border bg-zinc-200 shadow-sm p-4 sm:p-6"
+        className="flex flex-col w-full sm:w-96 border bg-zinc-200 shadow-sm p-4 sm:p-6"
       >
         <label className="tracking-wide text-muted-foreground mb-1">
           Выберите услугу
         </label>
         <select
-          className="mb-4 p-2 bg-white shadow-sm"
+          className="mb-4 p-2 rounded-none min-h-10 bg-white shadow-sm"
           {...register("service", { required: true })}
           onChange={handleServiceSelect}
         >
@@ -363,7 +363,7 @@ const FormSection = ({ services }: FormSectionProps) => {
                 Выберите мастера
               </label>
               <select
-                className="p-2 bg-white shadow-sm block w-full"
+                className="p-2 rounded-none min-h-10 bg-white shadow-sm block w-full"
                 {...register("master", { required: true })}
                 onChange={handleMasterSelect}
                 value={selectedMaster ? selectedMaster : ""}
@@ -397,7 +397,7 @@ const FormSection = ({ services }: FormSectionProps) => {
               Выберите день
             </label>
             <input
-              className="mb-4 p-2 bg-white shadow-sm"
+              className="mb-4 p-2  rounded-none min-h-10 bg-white shadow-sm"
               type="date"
               min={new Date().toISOString().split("T")[0]}
               max={
@@ -425,7 +425,7 @@ const FormSection = ({ services }: FormSectionProps) => {
             <select
               disabled={isLoadingSlots}
               value={selectedTime ? selectedTime : ""}
-              className="mb-4 p-2 bg-white shadow-sm"
+              className="mb-4 p-2 rounded-none min-h-10 bg-white shadow-sm"
               {...register("time", { required: true })}
               onChange={handleTimeSelect}
             >
@@ -455,7 +455,7 @@ const FormSection = ({ services }: FormSectionProps) => {
           Номер Вашего телефона
         </label>
         <input
-          className="mb-4 p-2 bg-white shadow-sm"
+          className="mb-4 p-2  rounded-none min-h-10 bg-white shadow-sm"
           type="tel"
           {...register("phone", { required: true })}
           value={phone ? phone : ""}
@@ -467,7 +467,7 @@ const FormSection = ({ services }: FormSectionProps) => {
           </span>
         )}
         <input
-          className="cursor-pointer shadow-sm hover:text-white bg-button-light hover:bg-button transition-colors w-full p-4"
+          className="cursor-pointer shadow-sm hover:text-white bg-button-light hover:bg-button transition-colors w-full p-4  rounded-none min-h-10"
           type="submit"
           value={"Записаться"}
         />
@@ -519,7 +519,7 @@ const FormSection = ({ services }: FormSectionProps) => {
             {bookingCreated ? (
               <Button
                 onClick={handleSubmitConfirmationClose}
-                className="bg-white text-black hover:bg-white/55"
+                className="bg-white  rounded-sm min-h-10 text-black hover:bg-white/55"
               >
                 Закрыть
               </Button>
@@ -527,14 +527,14 @@ const FormSection = ({ services }: FormSectionProps) => {
               <div className="flex flex-col gap-2">
                 <Button
                   onClick={handleSubmitConfirmationClose}
-                  className="bg-white text-black hover:bg-white/55"
+                  className="bg-white rounded-sm min-h-10 text-black hover:bg-white/55"
                   disabled={isLoadingConfirmation}
                 >
                   Отмена
                 </Button>
                 <Button
                   onClick={handleSubmitConfirmationConfirm}
-                  className="bg-button hover:bg-purple-700 mb-2"
+                  className="bg-button rounded-sm min-h-10 hover:bg-purple-700 mb-2"
                 >
                   {isLoadingConfirmation ? "Загрузка..." : "Записаться"}
                 </Button>

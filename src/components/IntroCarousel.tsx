@@ -74,7 +74,7 @@ const IntroCarousel = () => {
 
               <button
                 className="flex gap-1 text-sm lg:gap-2 items-center justify-center lg:absolute
-               top-1/2 right-52 w-full sm:w-auto sm:mx-auto lg:text-lg bg-gradient-to-l from-button to-pink-500
+               top-1/2 right-52 w-full sm:w-auto sm:mx-auto lg:text-lg bg-button-light
                 hover:translate-y-[-5%] lg:hover:translate-y-0 lg:hover:translate-x-4
                 hover:text-white transition-all duration-300 uppercase shadow-md p-2 sm:p-4 z-40 mb-6 lg:mb-0"
               >
@@ -90,7 +90,7 @@ const IntroCarousel = () => {
         <CarouselItem>
           <Link href={"#form"}>
             <div
-              className="flex flex-col lg:flex-row gap-6 lg:gap-0 relative bg-pink-600
+              className="flex flex-col lg:flex-row gap-6 lg:gap-0 relative bg-button-light
              lg:rounded-ss-3xl select-none min-h-[600px] lg:min-h-[520px]"
             >
               <div
@@ -105,11 +105,12 @@ const IntroCarousel = () => {
                 <div className="absolute top-0 bottom-0 right-0 left-0 bg-button/20" />
               </div>
               <button
-                className="flex gap-2 text-sm items-center justify-center mx-auto w-auto 
+                className="flex gap-2 text-base items-center justify-center mx-auto w-auto 
                 text-center lg:absolute -mt-12 lg:mt-0 sm:text-lg
                 lg:top-1/2 lg:right-52 bg-white
-                hover:translate-y-[-5%] lg:hover:translate-y-0 lg:hover:translate-x-4 hover:bg-purple-100
-                transition uppercase shadow-md p-2 sm:p-4 z-40"
+                hover:-translate-y-1 lg:hover:translate-y-0 lg:hover:translate-x-4 hover:bg-black
+                 hover:text-white
+                transition uppercase shadow-md p-4 z-40"
               >
                 Записаться <span className="hidden sm:inline">онлайн</span>{" "}
                 <GiOakLeaf size={24} />

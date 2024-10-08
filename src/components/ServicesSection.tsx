@@ -72,8 +72,8 @@ const ServicesSection = () => {
   ];
 
   return (
-    <div id="services" className="pb-4 pt-2 px-8">
-      <LuFlower className="text-center mx-auto mb-8" size={36} />
+    <div id="services" className="pb-4 px-2 sm:px-8">
+      <LuFlower className="text-center mx-auto mb-12" size={36} />
       <p className="italic text-xl leading-tight max-w-[60%] text-center mx-auto mb-10">
         «В девушке должны быть красивы две вещи —{" "}
         <span className="bg-button/30">взгляд</span> и{" "}
@@ -88,7 +88,7 @@ const ServicesSection = () => {
         широкий спектр услуг:
       </p>
       <div>
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-4 text-center">
           {services.map((service) => (
             <li
               key={service.title}
