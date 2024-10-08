@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Container from "@/components/Container";
 import Link from "next/link";
 import Footer from "./components/Footer";
+import TestCredentials from "./components/TestCredentials";
 
 export default async function LoginPage() {
   const supabase = createClient();
@@ -40,9 +41,13 @@ export default async function LoginPage() {
             Войти
           </button>
         </form>
-        <Link className="text-pink-950/70 hover:text-pink-950/60" href="/">
+        <Link
+          className="text-pink-950/70 hover:text-pink-950/60 mb-16"
+          href="/"
+        >
           На главную
         </Link>
+        <TestCredentials />
       </Container>
       <Container>
         <Footer />

@@ -188,7 +188,7 @@ const Page = () => {
           </div>
         )}
       </div>
-      <div className="sm:p-2 lg:p-8">
+      <div className=" lg:p-8">
         {periodSelectOpen && (
           <div className="hidden md:block mt-4 mb-12 max-w-[540px] md:max-w-[580px] max-h-[620px] bg-gray-50 p-4">
             <DateRangePicker
@@ -296,10 +296,7 @@ const Page = () => {
           </div>
         )}
 
-        <div
-          data-aos="zoom-in-up"
-          className="overflow-scroll max-h-[500px] bg-gray-50 sm:p-4 lg:p-8 transition"
-        >
+        <div className="overflow-scroll max-h-[1440px] bg-gray-50 sm:p-2 lg:p-8 transition">
           <table className="w-full text-left">
             <thead>
               <tr className="text-center">
