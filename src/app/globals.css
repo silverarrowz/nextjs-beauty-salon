@@ -80,10 +80,13 @@
 }
 
 html,
-body,
 :root {
   height: 100%;
   scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen;
 }
 
 .bg-light {
