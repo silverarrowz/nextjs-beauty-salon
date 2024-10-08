@@ -30,7 +30,7 @@ const Header = ({ user }: HeaderProps) => {
 
   return (
     <header
-      className="bg-button z-30 py-6 flex justify-between gap-4 items-center max-w-screen-xl
+      className="bg-button-light z-30 py-6 flex justify-between gap-4 items-center max-w-screen-xl
      px-4 mx-auto md:pl-40 md:pr-12 fixed top-0 left-0 right-0 bg-background"
     >
       <div className="flex justify-between sm:w-[35%] w-full">

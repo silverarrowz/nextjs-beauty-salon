@@ -22,9 +22,9 @@ const MobileNav = () => {
         <SheetTrigger>
           <HamburgerMenuIcon className="size-5" />
         </SheetTrigger>
-        <SheetContent side={"left"} className="w-[60%] sm:w-72">
+        <SheetContent side={"left"} className="w-full sm:w-72">
           <nav>
-            <ul className="gap-2 flex flex-col">
+            <ul className="gap-2 flex flex-col items-center sm:items-start pt-12 sm:p-0">
               {sections.map((section) => (
                 <li
                   key={section.label}

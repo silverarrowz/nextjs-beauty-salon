@@ -17,7 +17,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="w-[140px] hidden md:block fixed left-0 top-0 z-40 pt-6 pl-4 xl:pl-8  bg-button ">
+    <aside className="w-[140px] hidden md:block fixed left-0 top-0 z-40 pt-6 pl-4 xl:pl-8  bg-button-light">
       <Link href="/">
         <h2 className="text-xl hover:text-pink-700 tracking-tighter leading-none mb-12 pl-6 xl:-ml-4">
           Гомбрайх

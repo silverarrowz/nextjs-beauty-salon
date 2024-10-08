@@ -5,8 +5,8 @@ import Link from "next/link";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="min-h-56 bg-button pb-6 pt-4 px-12 flex flex-col text-center justify-center items-center gap-4 z-50">
-      <div className="text-accent tracking-widest flex flex-col md:flex-row gap-1 sm:gap-2 items-center mb-4">
+    <footer className="min-h-56 bg-button-light pb-6 pt-4 px-12 flex flex-col text-center justify-center items-center gap-4 z-50">
+      <div className=" tracking-widest flex flex-col md:flex-row gap-1 sm:gap-2 items-center mb-4">
         <p>
           9:00-20:00 <span className="hidden md:inline"> |</span>
         </p>
@@ -15,7 +15,7 @@ const Footer = () => {
         </p>
         <p>+7 (939) 796-48-99</p>
       </div>
-      <p className="text-accent -mt-2">ул. Красных Мадьяр, 29, Иркутск</p>
+      <p className=" -mt-2">ул. Красных Мадьяр, 29, Иркутск</p>
       <div className="flex gap-2">
         <Link href={"https://www.instagram.com/gombraih"} target="_blank">
           <FaInstagram

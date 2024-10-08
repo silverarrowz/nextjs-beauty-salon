@@ -15,12 +15,12 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     redirect("/login");
   }
   return (
-    <div className="bg-button h-auto min-h-screen">
-      <Container className="bg-button">
+    <div className="bg-button-light w-full h-full min-h-screen">
+      <Container className="bg-button-light">
         <Header user={data.user} />
         <div className="mb-6 mt-20 flex">
           <Sidebar />
-          <div className="bg-button w-full h-auto min-h-screen p-4 md:ml-32 rounded-sm">
+          <div className="bg-button-light w-full h-auto min-h-screen p-4 md:ml-32 rounded-sm">
             {children}
           </div>
         </div>
