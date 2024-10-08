@@ -18,7 +18,7 @@ export default async function LoginPage() {
         <form className="w-full flex flex-col gap-2 p-6 items-center bg-button-light shadow-md rounded-sm">
           <label htmlFor="email">E-mail:</label>
           <input
-            className="p-2 bg-zinc-100 text-black/80 w-full"
+            className="p-2 bg-gray-100 text-black/80 w-full"
             id="email"
             name="email"
             type="email"
@@ -26,14 +26,14 @@ export default async function LoginPage() {
           />
           <label htmlFor="password">Пароль:</label>
           <input
-            className="p-2 bg-zinc-100 text-black/80 w-full"
+            className="p-2 bg-gray-100 text-black/80 w-full"
             id="password"
             name="password"
             type="password"
             required
           />
           <button
-            className="mt-4 p-2 bg-zinc-200 shadow-sm text-black/80 hover:bg-black hover:text-white w-full"
+            className="mt-4 p-2 bg-gray-200 shadow-sm text-black/80 hover:bg-black hover:text-white w-full"
             formAction={login}
           >
             Войти

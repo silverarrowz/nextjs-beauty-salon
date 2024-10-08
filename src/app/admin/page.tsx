@@ -191,7 +191,7 @@ export default function Page() {
 
   return (
     <div className="sm:p-4 flex flex-col lg:flex-row gap-10">
-      <div className="bg-zinc-50 p-8 flex-grow w-full sm:w-auto sm:min-w-[352px]">
+      <div className="bg-gray-50 p-8 flex-grow w-full sm:w-auto sm:min-w-[352px]">
         <h1 className="mb-4">
           <span className="text-black/60">Текущий период:</span> {currentPeriod}
         </h1>
@@ -276,7 +276,7 @@ export default function Page() {
               Топ&nbsp;мастеров&nbsp;месяца
             </span>
           </h2>
-          <div className="px-6 py-8 bg-zinc-50 flex flex-col items-center">
+          <div className="px-6 py-8 bg-gray-50 flex flex-col items-center">
             <table className="bg-white">
               <thead>
                 <tr className="uppercase">

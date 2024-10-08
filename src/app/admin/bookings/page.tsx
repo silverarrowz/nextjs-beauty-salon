@@ -190,7 +190,7 @@ const Page = () => {
       </div>
       <div className="sm:p-2 lg:p-8">
         {periodSelectOpen && (
-          <div className="hidden md:block mt-4 mb-12 max-w-[540px] md:max-w-[580px] max-h-[620px] bg-zinc-50 p-4">
+          <div className="hidden md:block mt-4 mb-12 max-w-[540px] md:max-w-[580px] max-h-[620px] bg-gray-50 p-4">
             <DateRangePicker
               // TODO: найти способ перевести календарь на русский
               className="w-full"
@@ -298,7 +298,7 @@ const Page = () => {
 
         <div
           data-aos="zoom-in-up"
-          className="overflow-scroll max-h-[500px] bg-zinc-50 sm:p-4 lg:p-8 transition"
+          className="overflow-scroll max-h-[500px] bg-gray-50 sm:p-4 lg:p-8 transition"
         >
           <table className="w-full text-left">
             <thead>
@@ -342,10 +342,10 @@ const Page = () => {
                   <tr
                     key={booking.id}
                     className={
-                      editorValues?.id === booking.id ? "bg-zinc-200" : ""
+                      editorValues?.id === booking.id ? "bg-gray-200" : ""
                     }
                   >
-                    <TableCell className="bg-zinc-200">
+                    <TableCell className="bg-gray-200">
                       <button
                         onClick={() =>
                           handleBookingEdit(

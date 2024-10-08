@@ -333,7 +333,7 @@ const FormSection = ({ services }: FormSectionProps) => {
 
       <form
         onSubmit={handleSubmit(handleSubmitConfirmation)}
-        className="flex flex-col w-full sm:w-96 border bg-zinc-200 shadow-sm p-4 sm:p-6"
+        className="flex flex-col w-full sm:w-96 border bg-gray-200 shadow-sm p-4 sm:p-6"
       >
         <label className="tracking-wide text-muted-foreground mb-1">
           Выберите услугу

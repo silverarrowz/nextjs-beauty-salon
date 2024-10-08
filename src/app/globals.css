@@ -90,5 +90,5 @@ body {
 }
 
 .bg-light {
-  @apply bg-zinc-100;
+  @apply bg-gray-100;
 }

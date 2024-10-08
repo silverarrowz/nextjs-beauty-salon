@@ -24,7 +24,7 @@ const ScrollButton = () => {
   window.addEventListener("scroll", toggleVisible);
 
   return (
-    <button className="fixed w-5 right-[40px] bottom-[40px] h-5 text-3xl text-black/60 hover:text-black/70 transition-all z-50 cursor-pointer">
+    <button className="fixed w-5 right-[40px] bottom-[40px] h-5 text-3xl  text-pink-950/70 hover:text-pink-950 transition-all z-50 cursor-pointer">
       <FaChevronUp
         onClick={scrollToTop}
         style={{ display: visible ? "inline" : "none" }}
