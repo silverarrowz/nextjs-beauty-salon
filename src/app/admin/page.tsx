@@ -190,8 +190,8 @@ export default function Page() {
   }, [income, monthlyGoal, isLoading]);
 
   return (
-    <div className="p-2 sm:p-4 flex flex-col lg:flex-row gap-10">
-      <div className="bg-zinc-50 p-8 flex-grow min-w-[352px]">
+    <div className="sm:p-4 flex flex-col lg:flex-row gap-10">
+      <div className="bg-zinc-50 p-8 flex-grow w-full sm:w-auto sm:min-w-[352px]">
         <h1 className="mb-4">Прибыль за период - {currentPeriod}</h1>
         <hr className="mb-6 h-px border-t-0 w-64 bg-transparent bg-gradient-to-r from-black to-transparent opacity-35" />
 

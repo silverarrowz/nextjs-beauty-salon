@@ -8,7 +8,7 @@ const MobileNav = () => {
         <SheetTrigger>
           <HamburgerMenuIcon className="size-6 text-black/70" />
         </SheetTrigger>
-        <SheetContent side={"left"} className="w-[60%] sm:w-72">
+        <SheetContent side={"left"} className="w-full sm:w-72">
           <h3 className="mb-4 tracking-tighter text-xl">Гомбрайх</h3>
           <ul>
             <SheetClose asChild>

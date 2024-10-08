@@ -7,6 +7,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { BiUser } from "react-icons/bi";
 import MobileNav from "./MobileNav";
 import { createClient } from "@/utils/supabase/client";
+import { FaHome } from "react-icons/fa";
+import { TbDoorExit } from "react-icons/tb";
 
 interface HeaderProps {
   user: User;
@@ -35,18 +37,26 @@ const Header = ({ user }: HeaderProps) => {
     >
       <div className="flex justify-between sm:w-[35%] w-full">
         <MobileNav />
-        <Link href={"/admin"}>
-          <h1
-            className={cn(
-              "tracking-widest underline underline-offset-2 decoration-2 decoration-pink-700 hover:text-pink-700 hover:no-underline transition-all lg:ml-4 ",
-              {
-                "bg-white no-underline px-1 hover:text-black": isAdminMainPage,
-              }
-            )}
-          >
-            Панель управления
-          </h1>
-        </Link>
+        <div className="flex items-center gap-4">
+          <TbDoorExit className="text-black/70" onClick={signOut} size={20} />
+          <Link href={"/"}>
+            <FaHome className="text-black/70" size={20} />
+          </Link>
+
+          <Link href={"/admin"}>
+            <h1
+              className={cn(
+                "tracking-widest underline underline-offset-2 decoration-2 decoration-pink-700 hover:text-pink-700 hover:no-underline transition-all lg:ml-4 ",
+                {
+                  "bg-white no-underline px-1 hover:text-black":
+                    isAdminMainPage,
+                }
+              )}
+            >
+              Панель управления
+            </h1>
+          </Link>
+        </div>
       </div>
 
       <div className="hidden sm:flex items-center gap-3 justify-between text-sm">
