@@ -20,14 +20,11 @@ const Footer = () => {
         <Link href={"https://www.instagram.com/gombraih"} target="_blank">
           <FaInstagram
             size={24}
-            className="text-black hover:text-white transition-colors"
+            className=" hover:text-white transition-colors"
           />
         </Link>
         <Link href={"https://vk.com/gombraih_studia"} target="_blank">
-          <FaVk
-            size={24}
-            className="text-black hover:text-white transition-colors"
-          />
+          <FaVk size={24} className=" hover:text-white transition-colors" />
         </Link>
       </div>
       <hr className="h-px w-3/5 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-black to-transparent opacity-25 dark:via-neutral-400" />

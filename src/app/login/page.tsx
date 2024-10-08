@@ -13,8 +13,8 @@ export default async function LoginPage() {
   }
 
   return (
-    <div className="h-full">
-      <Container className="max-w-96 flex flex-col justify-center items-center gap-2 h-full">
+    <div className="min-h-screen pt-24 flex flex-col justify-between gap-24">
+      <Container className="max-w-96 flex flex-col justify-center items-center gap-2 h-full ">
         <form className="w-full flex flex-col gap-2 p-6 items-center bg-button-light shadow-md rounded-sm">
           <label htmlFor="email">E-mail:</label>
           <input
