@@ -70,8 +70,7 @@ const MobileNav = () => {
                 <button
                   onClick={signOut}
                   className="p-2 text-lg mr-4 xl:-ml-4 tracking-widest hover:text-pink-700
-                   transition underline  underline-offset-2 decoration-pink-700
-                    decoration-2 hover:no-underline"
+                   transition"
                 >
                   Выход
                 </button>
