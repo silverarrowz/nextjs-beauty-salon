@@ -7,7 +7,7 @@ const MobileNav = () => {
     <div className="sm:hidden flex items-center">
       <Sheet>
         <SheetTrigger>
-          <HamburgerMenuIcon className="size-6 text-black/70" />
+          <HamburgerMenuIcon className="size-5 text-pink-950" />
         </SheetTrigger>
         <SheetContent
           side={"left"}

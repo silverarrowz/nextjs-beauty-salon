@@ -13,7 +13,10 @@ const IntroSection = () => {
   }, []);
 
   return (
-    <div className="mb-12 mt-20 md:mt-24 lg:mt-32 max-w-[860px] xl:max-w-screen-lg 2xl:max-w-screen-xl mx-auto transition-all">
+    <div
+      className="mb-12 mt-20 md:mt-24 lg:mt-32 max-w-[860px] xl:max-w-screen-lg
+     2xl:max-w-screen-xl mx-auto transition-all text-pink-950"
+    >
       <IntroCarousel />
       <div className="max-w-screen-lg mx-4 xl:mx-auto">
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-light pt-8 pb-12 leading-tight sm:leading-relaxed md:leading-loose">

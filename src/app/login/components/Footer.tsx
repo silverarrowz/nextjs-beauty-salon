@@ -5,7 +5,7 @@ import Link from "next/link";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="min-h-56 bg-light py-6  lg:-mx-0 flex flex-col text-center justify-center items-center gap-4">
+    <footer className="min-h-56 bg-button-light py-6  lg:-mx-0 flex flex-col text-center justify-center items-center gap-4">
       <div className="tracking-widest flex flex-col sm:flex-row gap-1 sm:gap-2 items-center mb-4">
         <p>
           9:00-20:00 <span className="hidden sm:inline"> |</span>

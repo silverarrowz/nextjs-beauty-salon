@@ -64,7 +64,7 @@ const IntroCarousel = () => {
                 </h2>
                 <p
                   className="text-center text-2xl lg:text-base mb-8 lg:mb-0
-                 text-black/70 leading-snug lg:leading-tight max-w-full lg:max-w-72"
+                 text-pink-950 leading-snug lg:leading-tight max-w-full lg:max-w-72"
                 >
                   Всю осень дарим скидку{" "}
                   <span className="text-3xl lg:text-3xl">20%</span> на все
@@ -90,7 +90,7 @@ const IntroCarousel = () => {
         <CarouselItem>
           <Link href={"#form"}>
             <div
-              className="flex flex-col lg:flex-row gap-6 lg:gap-0 relative bg-button-light
+              className="flex flex-col lg:flex-row gap-6 lg:gap-0 relative bg-button-light/70
              lg:rounded-ss-3xl select-none min-h-[600px] lg:min-h-[520px]"
             >
               <div
@@ -107,7 +107,7 @@ const IntroCarousel = () => {
               <button
                 className="flex gap-2 text-base items-center justify-center mx-auto w-auto 
                 text-center lg:absolute -mt-12 lg:mt-0 sm:text-lg
-                lg:top-1/2 lg:right-52 bg-white
+                lg:top-1/2 lg:right-52 bg-white text-pink-950
                 hover:-translate-y-1 lg:hover:translate-y-0 lg:hover:translate-x-4 hover:bg-black
                  hover:text-white
                 transition uppercase shadow-md p-4 z-40"
@@ -121,7 +121,7 @@ const IntroCarousel = () => {
                  lg:w-[530px] lg:text-left lg:mx-0"
               >
                 <h2
-                  className="lg:absolute top-8 right-[14%] text-3xl
+                  className="lg:absolute top-8 right-[14%] text-3xl text-pink-950
                  lg:text-4xl lg:max-w-44 lg:mb-10 tracking-wider lg:leading-snug"
                 >
                   Осенний завоз декоративной косметики!
@@ -129,7 +129,7 @@ const IntroCarousel = () => {
               </div>
 
               <p
-                className=" text-center text-lg lg:text-base text-black/60 leading-tight p-6 mb-6 lg:p-0 lg:m-0
+                className=" text-center text-lg lg:text-base text-pink-950 leading-tight p-6 mb-6 lg:p-0 lg:m-0
                lg:max-w-72 lg:absolute bottom-24 right-[4%]"
               >
                 Скидка <span className="text-3xl font-bold">15%</span> на макияж
@@ -165,12 +165,12 @@ const IntroCarousel = () => {
                lg:items-start pt-6 lg:pt-16 px-4 lg:px-6 h-full"
               >
                 <p
-                  className="text-center text-lg sm:text-xl lg:text-lg text-black/50
+                  className="text-center text-lg sm:text-xl lg:text-lg text-pink-950
                  leading-tight max-w-full lg:max-w-72 mb-4 lg:mb-0"
                 >
                   Дарим всем новым клиентам скидку
                   <br />
-                  <span className="text-5xl sm:text-6xl lg:text-8xl text-black leading-snug italic">
+                  <span className="text-5xl sm:text-6xl lg:text-8xl text-pink-950 leading-snug italic">
                     15%{" "}
                   </span>
                   <br />

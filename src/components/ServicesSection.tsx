@@ -92,18 +92,25 @@ const ServicesSection = () => {
           {services.map((service) => (
             <li
               key={service.title}
-              className="relative max-w-96 sm:max-w-72 p-6 shadow-sm bg-card justify-self-center "
+              className="relative max-w-96 sm:max-w-72 p-6 shadow-sm 
+              bg-card justify-self-center"
             >
               <img
-                className="object-cover aspect-[4/3] sm:aspect-square mb-5 hover:scale-105 transition-transform"
+                className="object-cover aspect-[4/3] sm:aspect-square mb-5
+                 hover:scale-105 transition-transform"
                 src={service.image}
                 alt={service.title}
               />
-              <h3 className="mb-4 uppercase tracking-widest text-muted-foreground">
+              <h3 className="mb-4 uppercase tracking-widest text-pink-800">
                 {service.title}
               </h3>
-              <p className="leading-tight text-sm">{service.description}</p>
-              <p className="text-sm font-medium text-white tracking-wider p-1 bg-button absolute -bottom-2 -right-2">
+              <p className="leading-tight text-sm pb-4">
+                {service.description}
+              </p>
+              <p
+                className="text-sm font-medium  tracking-wider 
+              p-2 bg-white absolute border-pink-900 border -bottom-2 -right-2"
+              >
                 {service.price}
               </p>
             </li>

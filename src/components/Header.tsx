@@ -10,7 +10,7 @@ const Header = () => {
     >
       <div className="flex gap-2">
         <MobileNav />
-        <h2 className="text-xl tracking-tighter">Гомбрайх</h2>
+        <h2 className="text-xl text-pink-950 tracking-tighter">Гомбрайх</h2>
       </div>
 
       <div className="flex items-center gap-4">

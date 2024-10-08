@@ -75,7 +75,7 @@
   h4,
   a,
   div {
-    @apply selection:bg-button;
+    @apply selection:bg-button text-pink-950;
   }
 }
 

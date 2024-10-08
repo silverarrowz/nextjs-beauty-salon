@@ -15,7 +15,7 @@ export default async function LoginPage() {
   return (
     <div className="h-full">
       <Container className="max-w-96 flex flex-col justify-center items-center gap-2 h-full">
-        <form className="w-full flex flex-col gap-2 p-6 items-center bg-button shadow-md rounded-sm">
+        <form className="w-full flex flex-col gap-2 p-6 items-center bg-button-light shadow-md rounded-sm">
           <label htmlFor="email">E-mail:</label>
           <input
             className="p-2 bg-zinc-100 text-black/80 w-full"
@@ -43,7 +43,9 @@ export default async function LoginPage() {
           На главную
         </Link>
       </Container>
-      <Footer />
+      <Container>
+        <Footer />
+      </Container>
     </div>
   );
 }
