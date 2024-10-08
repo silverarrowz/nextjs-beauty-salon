@@ -140,7 +140,10 @@ const Page = () => {
 
   return (
     <div>
-      <div className="flex flex-col lg:flex-row items-center lg:items-baseline gap-4 justify-between mb-4">
+      <div
+        className="flex flex-col lg:flex-row items-center lg:items-baseline
+       gap-4 justify-between mb-4"
+      >
         <h2 className="pl-7">
           Записи за период с{" "}
           <button
@@ -185,7 +188,7 @@ const Page = () => {
           </div>
         )}
       </div>
-      <div className="p-4 sm:p-2 lg:p-8">
+      <div className="sm:p-2 lg:p-8">
         {periodSelectOpen && (
           <div className="hidden md:block mt-4 mb-12 max-w-[540px] md:max-w-[580px] max-h-[620px] bg-zinc-50 p-4">
             <DateRangePicker
@@ -228,17 +231,17 @@ const Page = () => {
           </div>
         )}
         {editorOpen && (
-          <div className="mb-4 p-2">
+          <div className="mb-4 ">
             <form
               onSubmit={handleSubmit}
               className="tracking-tight text-sm flex flex-col sm:flex-row sm:justify-between items-center"
             >
-              <div className="flex gap-4 mb-4 sm:mb-0">
+              <div className="flex gap-2 sm:gap-4 mb-4 sm:mb-0">
                 <p className="text-lg">ID: {editorValues?.id}</p>
                 <label>
                   Цена
                   <input
-                    className="ml-2 py-1 px-2 border max-w-24"
+                    className="ml-2 py-1 px-2 border max-w-16 sm:max-w-24"
                     value={editorValues?.price}
                     onChange={handlePriceChange}
                     type="number"

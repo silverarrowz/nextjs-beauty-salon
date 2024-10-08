@@ -20,7 +20,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
         <Header user={data.user} />
         <div className="mb-6 mt-20 flex">
           <Sidebar />
-          <div className="bg-button-light w-full h-auto min-h-screen p-4 md:ml-32 rounded-sm">
+          <div className="bg-button-light w-full h-auto min-h-screen sm:p-4 md:ml-32 rounded-sm">
             {children}
           </div>
         </div>
