@@ -23,7 +23,7 @@ const TestCredentials = () => {
       <h2 className="text-pink-950/70 text-center mb-3 text-sm">
         Тестовые данные для входа:
       </h2>
-      <div className="text-center bg-gray-50 p-6 rounded-sm">
+      <div className="text-center outline outline-1 outline-pink-950/30 mb-2 bg-gray-50 p-6 rounded-sm">
         <label
           onClick={() => handleCopy(login, "login")}
           className="text-pink-950/70 mb-2 block"
@@ -32,7 +32,7 @@ const TestCredentials = () => {
         </label>
         <div className="mb-4 flex items-center relative">
           <input
-            className="p-2 shadow-sm mr-2"
+            className="p-2 shadow-sm mr-2 outline outline-1 outline-pink-950/20"
             type="text"
             id="login"
             value={login}
@@ -67,7 +67,7 @@ const TestCredentials = () => {
         </label>
         <div className="flex items-center relative">
           <input
-            className="p-2 shadow-sm mr-2"
+            className="p-2 shadow-sm mr-2 outline outline-1 outline-pink-950/20"
             type="text"
             id="password"
             value={password}

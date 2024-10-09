@@ -1,11 +1,21 @@
 import { FaInstagram } from "react-icons/fa6";
 import { FaVk } from "react-icons/fa";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-const Footer = () => {
+interface FooterProps {
+  className?: string;
+}
+
+const Footer = ({ className }: FooterProps) => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="min-h-56 bg-button-light py-6 w-full px-8 lg:-mx-0 flex flex-col text-center justify-center items-center gap-4">
+    <footer
+      className={cn(
+        "min-h-56 bg-button-light py-6 w-full px-8 lg:-mx-0 flex flex-col text-center justify-center items-center gap-4",
+        className
+      )}
+    >
       <div className="tracking-widest flex flex-col sm:flex-row gap-1 sm:gap-2 items-center mb-4">
         <p>
           9:00-20:00 <span className="hidden sm:inline"> |</span>
