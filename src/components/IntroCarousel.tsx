@@ -76,7 +76,7 @@ const IntroCarousel = () => {
                 className="flex gap-1 text-sm lg:gap-2 items-center justify-center lg:absolute
                top-1/2 right-52 w-full sm:w-auto sm:mx-auto lg:text-lg bg-button-light
                 hover:translate-y-[-5%] lg:hover:translate-y-0 lg:hover:translate-x-4
-                hover:text-pink-800 transition-all duration-300 uppercase shadow-md p-2
+                hover:text-pink-900 transition-all duration-300 uppercase shadow-md p-2
                  sm:p-4 z-40 mb-6 lg:mb-0"
               >
                 Получить скидку <LuFlower size={24} />
@@ -108,9 +108,9 @@ const IntroCarousel = () => {
               <button
                 className="flex gap-2 text-base items-center justify-center mx-auto w-auto 
                 text-center lg:absolute -mt-12 lg:mt-0 sm:text-lg
-                lg:top-1/2 lg:right-52 bg-white text-pink-950
+                lg:top-1/2 lg:right-52 bg-white text-pink-950 outline outline-pink-900 outline-1
                 hover:-translate-y-1 lg:hover:translate-y-0 lg:hover:translate-x-4
-                 hover:text-pink-800
+              
                 
                 transition uppercase shadow-md p-4 z-40"
               >
