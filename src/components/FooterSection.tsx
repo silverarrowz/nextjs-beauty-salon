@@ -50,7 +50,7 @@ const FooterSection = () => {
           9:00-20:00 <span className="hidden sm:inline"> |</span>
         </p>
         <p className="text-pink-950/70">
-          gombreichsalon@yandex.ru <span className="hidden sm:inline"> |</span>
+          salon@gombreich.ru <span className="hidden sm:inline"> |</span>
         </p>
         <p className="text-pink-950/70">+7 (939) 796-48-99</p>
       </div>

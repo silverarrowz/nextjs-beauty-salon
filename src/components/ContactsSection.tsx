@@ -8,7 +8,7 @@ const ContactsSection = () => {
       <hr className="mb-4 h-px w-3/5 border-t-0 bg-transparent bg-gradient-to-r max-w-48 from-transparent via-black to-transparent opacity-40" />
 
       <div className="mb-4 text-sm flex flex-col items-center sm:flex-row sm:gap-3 text-black/60">
-        <p>gombreichsalon@yandex.ru</p>
+        <p>salon@gombreich.ru</p>
         <p className="hidden sm:block">|</p>
         <p>+7 (939) 796-48-99</p>
       </div>

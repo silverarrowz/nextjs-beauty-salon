@@ -21,7 +21,7 @@ const Footer = ({ className }: FooterProps) => {
           9:00-20:00 <span className="hidden sm:inline"> |</span>
         </p>
         <p>
-          gombreichsalon@yandex.ru <span className="hidden sm:inline"> |</span>
+          salon@gombreich.ru <span className="hidden sm:inline"> |</span>
         </p>
         <p>+7 (939) 796-48-99</p>
       </div>
