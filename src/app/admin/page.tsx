@@ -274,15 +274,18 @@ export default function Page() {
               Топ&nbsp;мастеров&nbsp;месяца
             </span>
           </h2>
-          <div className="px-6 py-8 bg-gray-50 flex flex-col items-center outline-1 outline outline-pink-800/20">
-            <table className="bg-white">
+          <div
+            className="px-6 pb-4 pt-4 bg-white flex flex-col items-center
+           outline-1 outline outline-pink-800/20"
+          >
+            <table className="bg-white text-pink-900">
               <thead>
-                <tr className="uppercase">
-                  <th className="border-slate-400 p-3 text-sm text-left"></th>
-                  <th className="border-slate-400 p-3 text-sm text-left">
+                <tr className="uppercase ">
+                  <th className="border-slate-400 pb-4 pt-2 px-3 text-sm text-left"></th>
+                  <th className="border-slate-400 pb-4 pt-2 px-3 text-sm text-left">
                     Мастер
                   </th>
-                  <th className="border-slate-400 p-3 text-sm text-left">
+                  <th className="border-slate-400 pb-4 pt-2 px-3 text-sm text-left">
                     Доход (руб.)
                   </th>
                 </tr>
@@ -291,7 +294,8 @@ export default function Page() {
                 {mastersSumIncome!.map((master, index) => (
                   <tr
                     key={index}
-                    className="hover:bg-button-light first:bg-amber-200 transition-colors even:bg-amber-50"
+                    className="hover:bg-button-light first:bg-amber-200
+                     transition-colors even:bg-amber-50"
                   >
                     <td className="border-slate-400 px-3 py-2 text-sm text-left">
                       {index + 1}
