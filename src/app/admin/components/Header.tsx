@@ -38,7 +38,10 @@ const Header = ({ user }: HeaderProps) => {
       <div className="flex justify-between sm:w-[35%] w-full">
         <MobileNav />
         <div className="flex items-center gap-4">
-          <TbDoorExit className="sm:hidden" onClick={signOut} size={20} />
+          <button onClick={signOut}>
+            <TbDoorExit className="sm:hidden" size={20} />
+          </button>
+
           <Link href={"/"}>
             <FaHome className="sm:hidden" size={20} />
           </Link>

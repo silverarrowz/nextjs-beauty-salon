@@ -33,7 +33,7 @@ const IntroSection = () => {
         </p>
 
         <a
-          href="#"
+          href="#form"
           className="bg-button hover:bg-button/30 hover:italic transition tracking-wider"
         >
           Выбрать услугу &rarr;

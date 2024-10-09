@@ -35,7 +35,7 @@ const TestCredentials = () => {
             className="p-2 shadow-sm mr-2"
             type="text"
             id="login"
-            value={"demo-admin@test.com"}
+            value={login}
             readOnly
           />
 
@@ -70,7 +70,7 @@ const TestCredentials = () => {
             className="p-2 shadow-sm mr-2"
             type="text"
             id="password"
-            value={"1234abcd"}
+            value={password}
             readOnly
           />
           <p
