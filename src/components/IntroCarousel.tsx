@@ -37,10 +37,10 @@ const IntroCarousel = () => {
           <Link href={"#form"}>
             <div
               className="flex flex-col lg:flex-row gap-3 lg:gap-0 relative
-             bg-white xl:rounded-ss-3xl select-none p-4 lg:p-0 min-h-[600px] lg:min-h-[520px]"
+             bg-white lg:rounded-ss-3xl select-none p-4 lg:p-0 min-h-[600px] lg:min-h-[520px]"
             >
               <div
-                className="relative w-full h-[352px] sm:h-[496px] lg:h-[520px] xl:rounded-ss-3xl
+                className="relative w-full h-[352px] sm:h-[496px] lg:h-[520px] lg:rounded-ss-3xl
                overflow-hidden z-10 flex-grow"
               >
                 <img
@@ -76,7 +76,7 @@ const IntroCarousel = () => {
                 className="flex gap-1 text-sm lg:gap-2 items-center justify-center lg:absolute
                top-1/2 right-52 w-full sm:w-auto sm:mx-auto lg:text-lg bg-button-light
                 hover:translate-y-[-5%] lg:hover:translate-y-0 lg:hover:translate-x-4
-                hover:text-pink-900 transition-all duration-300 uppercase shadow-md p-2
+                hover:text-pink-900 hover:outline outline-1 outline-pink-900 transition-all duration-300 uppercase shadow-md p-2
                  sm:p-4 z-40 mb-6 lg:mb-0"
               >
                 Получить скидку <LuFlower size={24} />
@@ -187,8 +187,7 @@ const IntroCarousel = () => {
                  transition uppercase shadow-md p-3 sm:p-4 xl:p-8 z-40 mb-6 lg:mb-0"
               >
                 Записаться
-                <br />
-                онлайн
+                <br className="sm:hidden lg:block" /> онлайн
               </button>
             </div>
           </Link>

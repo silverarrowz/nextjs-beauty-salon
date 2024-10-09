@@ -38,8 +38,8 @@ const FooterSection = () => {
         href="#form"
         className={cn(
           buttonVariants(),
-          ` text-base tracking-wider rounded-none bg-pink-950 hover:bg-button-light
-          hover:border border-pink-900 hover:text-pink-950 box-border`
+          ` text-base tracking-wider rounded-none bg-zinc-50 hover:bg-transparent
+         border border-pink-900 text-pink-950 box-border`
         )}
       >
         Записаться онлайн

@@ -333,13 +333,13 @@ const FormSection = ({ services }: FormSectionProps) => {
 
       <form
         onSubmit={handleSubmit(handleSubmitConfirmation)}
-        className="flex flex-col w-full sm:w-96 border bg-gray-200 shadow-sm p-4 sm:p-6"
+        className="flex flex-col w-full sm:w-96 border border-pink-900/60 bg-gray-200 shadow-sm p-4 sm:p-6"
       >
-        <label className="tracking-wide text-muted-foreground mb-1">
+        <label className="tracking-wide text-pink-950/60 mb-1">
           Выберите услугу
         </label>
         <select
-          className="mb-4 p-2 rounded-none min-h-10 bg-white shadow-sm"
+          className="mb-4 p-2 text-pink-900 rounded-none min-h-10 bg-white shadow-sm"
           {...register("service", { required: true })}
           onChange={handleServiceSelect}
         >
@@ -359,11 +359,11 @@ const FormSection = ({ services }: FormSectionProps) => {
         {selectedService && (
           <div className="mb-4">
             <div className="">
-              <label className="tracking-wide text-muted-foreground mb-1">
+              <label className="tracking-wide text-pink-950/60 mb-1">
                 Выберите мастера
               </label>
               <select
-                className="p-2 rounded-none min-h-10 bg-white shadow-sm block w-full"
+                className="p-2 text-pink-900 rounded-none min-h-10 bg-white shadow-sm block w-full"
                 {...register("master", { required: true })}
                 onChange={handleMasterSelect}
                 value={selectedMaster ? selectedMaster : ""}
@@ -386,18 +386,18 @@ const FormSection = ({ services }: FormSectionProps) => {
         )}
 
         {selectedMaster && !!price && (
-          <div className="mb-4 text-muted-foreground text-sm italic">
+          <div className="mb-4 text-pink-950/60 text-sm italic">
             Стоимость услуги ~ {price} руб.
           </div>
         )}
 
         {selectedMaster && (
           <div>
-            <label className="tracking-wide mr-2 text-muted-foreground">
+            <label className="tracking-wide mr-2 text-pink-950/60">
               Выберите день
             </label>
             <input
-              className="mb-4 p-2  rounded-none min-h-10 bg-white shadow-sm"
+              className="mb-4 p-2 text-pink-900 rounded-none min-h-10 bg-white shadow-sm"
               type="date"
               min={new Date().toISOString().split("T")[0]}
               max={
@@ -419,13 +419,13 @@ const FormSection = ({ services }: FormSectionProps) => {
 
         {selectedDate && (
           <div>
-            <label className="tracking-wide mr-2 text-muted-foreground">
+            <label className="tracking-wide mr-2 text-pink-950/60">
               Выберите время
             </label>
             <select
               disabled={isLoadingSlots}
               value={selectedTime ? selectedTime : ""}
-              className="mb-4 p-2 rounded-none min-h-10 bg-white shadow-sm"
+              className="mb-4 p-2 rounded-none min-h-10 text-pink-900 bg-white shadow-sm"
               {...register("time", { required: true })}
               onChange={handleTimeSelect}
             >
@@ -446,16 +446,16 @@ const FormSection = ({ services }: FormSectionProps) => {
           </div>
         )}
         {selectedDate && timeSlots.length === 0 && !isLoadingSlots && (
-          <p className="mb-4 text-sm text-muted-foreground">
+          <p className="mb-4 text-sm text-pink-950/60">
             Нет свободного времени. Выберите другой день.
           </p>
         )}
 
-        <label className="tracking-wide text-muted-foreground mb-1">
+        <label className="tracking-wide text-pink-950/60 mb-1">
           Номер Вашего телефона
         </label>
         <input
-          className="mb-4 p-2  rounded-none min-h-10 bg-white shadow-sm"
+          className="mb-4 p-2 text-pink-900 rounded-none min-h-10 bg-white shadow-sm"
           type="tel"
           {...register("phone", { required: true })}
           value={phone ? phone : ""}
@@ -467,7 +467,7 @@ const FormSection = ({ services }: FormSectionProps) => {
           </span>
         )}
         <input
-          className="cursor-pointer shadow-sm hover:text-white bg-button-light hover:bg-button transition-colors w-full p-4  rounded-none min-h-10"
+          className="cursor-pointer shadow-sm text-pink-950 hover:text-zinc-50 bg-button-light hover:bg-button hover:outline outline-1 outline-pink-900/60 transition-colors w-full p-4  rounded-none min-h-10"
           type="submit"
           value={"Записаться"}
         />
