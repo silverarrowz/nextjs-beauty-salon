@@ -126,7 +126,7 @@ const Page = () => {
     ({ className, children, colSpan, ...props }, ref) => {
       return (
         <td
-          className={cn("p-1 border text-sm tracking-tight", className)}
+          className={cn("p-1 text-sm tracking-tight", className)}
           ref={ref}
           {...props}
         >
@@ -234,7 +234,8 @@ const Page = () => {
           <div className="mb-4 ">
             <form
               onSubmit={handleSubmit}
-              className="tracking-tight text-sm flex flex-col sm:flex-row sm:justify-between items-center"
+              className="tracking-tight text-sm flex flex-col sm:flex-row
+               sm:justify-between items-center"
             >
               <div className="flex gap-2 sm:gap-4 mb-4 sm:mb-0">
                 <p className="text-lg">ID: {editorValues?.id}</p>
@@ -296,7 +297,14 @@ const Page = () => {
           </div>
         )}
 
-        <div className="overflow-scroll max-h-[1440px] bg-gray-50 sm:p-2 lg:p-8 transition">
+        <div
+          className="sm:rounded-ss-md overflow-auto 
+          [&::-webkit-scrollbar]:w-2
+           [&::-webkit-scrollbar]:h-2
+  [&::-webkit-scrollbar-track]:bg-gray-100
+  [&::-webkit-scrollbar-thumb]:bg-pink-800/70
+        max-h-[1440px] bg-gray-50 sm:p-2 lg:p-4 transition outline-1 outline outline-pink-800/10"
+        >
           <table className="w-full text-left">
             <thead>
               <tr className="text-center">
@@ -338,11 +346,12 @@ const Page = () => {
                 bookings.map((booking) => (
                   <tr
                     key={booking.id}
-                    className={
-                      editorValues?.id === booking.id ? "bg-gray-200" : ""
-                    }
+                    className={cn("hover:bg-button-light", {
+                      "bg-red-100": !booking.paid,
+                      "bg-gray-200": editorValues?.id === booking.id,
+                    })}
                   >
-                    <TableCell className="bg-gray-200">
+                    <TableCell className="pr-2">
                       <button
                         onClick={() =>
                           handleBookingEdit(
@@ -355,7 +364,7 @@ const Page = () => {
                         <CiEdit size={18} />
                       </button>
                     </TableCell>
-                    <TableCell className={booking.paid ? "" : "bg-red-100"}>
+                    <TableCell>
                       {new Date(booking.booking_date).toLocaleDateString(
                         "ru-RU",
                         {
@@ -365,33 +374,19 @@ const Page = () => {
                         }
                       )}
                     </TableCell>
-                    <TableCell className={booking.paid ? "" : "bg-red-100"}>
+                    <TableCell>
                       {new Date(booking.booking_date)
                         .toLocaleTimeString()
                         .slice(0, 5)}
                     </TableCell>
-                    <TableCell className={booking.paid ? "" : "bg-red-100"}>
-                      {booking.masters.name}
-                    </TableCell>
-                    <TableCell
-                      className={cn("max-w-32", {
-                        "bg-red-100": !booking.paid,
-                      })}
-                    >
+                    <TableCell>{booking.masters.name}</TableCell>
+                    <TableCell className={cn("max-w-32")}>
                       {booking.services.label}
                     </TableCell>
-                    <TableCell className={booking.paid ? "" : "bg-red-100"}>
-                      {booking.client}
-                    </TableCell>
-                    <TableCell className={booking.paid ? "" : "bg-red-100"}>
-                      {booking.price}
-                    </TableCell>
-                    <TableCell className={booking.paid ? "" : "bg-red-100"}>
-                      {booking.paid ? "Да" : "Нет"}
-                    </TableCell>
-                    <TableCell className={booking.paid ? "" : "bg-red-100"}>
-                      {booking.id}
-                    </TableCell>
+                    <TableCell>{booking.client}</TableCell>
+                    <TableCell>{booking.price}</TableCell>
+                    <TableCell>{booking.paid ? "Да" : "Нет"}</TableCell>
+                    <TableCell>{booking.id}</TableCell>
                   </tr>
                 ))
               ) : (

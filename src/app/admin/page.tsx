@@ -6,8 +6,6 @@ import { cn } from "@/lib/utils";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import { FaCrown } from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 export default function Page() {
   const [monthlyGoal, setMonthlyGoal] = useState<string>("");
@@ -28,12 +26,6 @@ export default function Page() {
 
   const [mastersSumIncome, setMastersSumIncome] =
     useState<MastersIncome | null>([]);
-
-  useEffect(() => {
-    AOS.init({
-      duration: 500,
-    });
-  }, []);
 
   // TODO: добавить функцию просмотра данных за прошлые периоды
 
@@ -191,11 +183,17 @@ export default function Page() {
 
   return (
     <div className="sm:p-4 flex flex-col lg:flex-row gap-10">
-      <div className="bg-gray-50 p-8 flex-grow w-full sm:w-auto sm:min-w-[352px]">
+      <div
+        className="bg-gray-50 p-8 flex-grow w-full sm:w-auto sm:min-w-[352px]
+       outline-1 outline outline-pink-800/20"
+      >
         <h1 className="mb-4">
           <span className="text-black/60">Текущий период:</span> {currentPeriod}
         </h1>
-        <hr className="mb-6 h-px border-t-0 w-64 bg-transparent bg-gradient-to-r from-black to-transparent opacity-35" />
+        <hr
+          className="mb-6 h-px border-t-0 w-64 bg-transparent bg-gradient-to-r
+         from-black to-transparent opacity-35"
+        />
 
         <div className="flex gap-2 items-center mb-8">
           <p className="uppercase text-sm">
@@ -276,7 +274,7 @@ export default function Page() {
               Топ&nbsp;мастеров&nbsp;месяца
             </span>
           </h2>
-          <div className="px-6 py-8 bg-gray-50 flex flex-col items-center">
+          <div className="px-6 py-8 bg-gray-50 flex flex-col items-center outline-1 outline outline-pink-800/20">
             <table className="bg-white">
               <thead>
                 <tr className="uppercase">
