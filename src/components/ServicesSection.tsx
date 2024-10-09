@@ -95,9 +95,9 @@ const ServicesSection = () => {
               className="relative max-w-96 sm:max-w-72 p-6 shadow-sm 
               bg-card justify-self-center"
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden h-60 sm:h-48 lg:h-40 xl:h-52">
                 <img
-                  className="object-cover aspect-[4/3] sm:aspect-square mb-5
+                  className="object-cover w-full max-h-full mb-5
                  hover:scale-105 transition-transform"
                   src={service.image}
                   alt={service.title}
@@ -107,7 +107,7 @@ const ServicesSection = () => {
                   width="180%"
                   height="57.82px"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute -bottom-2 -left-16 -right-4"
+                  className="absolute -bottom-2.5 -left-16 -right-4 md:-bottom-4 "
                 >
                   {" "}
                   <path
