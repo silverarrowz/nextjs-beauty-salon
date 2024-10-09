@@ -25,7 +25,7 @@ export default async function Home() {
       </Container>
       <ContactsSection />
       <FooterSection />
-      {/* <ScrollButton /> */}
+      <ScrollButton />
     </div>
   );
 }
