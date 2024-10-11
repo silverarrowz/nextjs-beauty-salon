@@ -23,6 +23,7 @@ const config = {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
+        "background-bright": "var(--background-bright)",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -54,7 +55,7 @@ const config = {
         },
         button: {
           DEFAULT: "hsl(261.97deg 67.56% 71.35%)",
-          light: "hsl(261.97deg 71.92% 88.22%)",
+          light: "hsl(298.52deg 100% 86.93%)",
         },
       },
       borderRadius: {

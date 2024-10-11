@@ -39,7 +39,7 @@ const FooterSection = () => {
         className={cn(
           buttonVariants(),
           ` text-base tracking-wider rounded-none bg-zinc-50 hover:bg-transparent
-         border border-pink-900 text-pink-950 box-border`
+         border border-pink-800 text-pink-800 box-border`
         )}
       >
         Записаться онлайн
@@ -66,7 +66,7 @@ const FooterSection = () => {
           <FaVk size={24} className=" hover:text-pink-900 transition-colors" />
         </Link>
       </div>
-      <hr className="h-px w-3/5 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-black to-transparent opacity-25 dark:via-neutral-400" />
+      <hr className="h-px w-3/5 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-pink-950 to-transparent opacity-25 dark:via-neutral-400" />
 
       <p className="max-w-72 sm:max-w-96 text-sm text-pink-950/70">
         Не является публичной офертой. Окончательная стоимость услуг

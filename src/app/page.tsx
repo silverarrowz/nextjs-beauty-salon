@@ -13,7 +13,7 @@ export default async function Home() {
   const ServicesWithMasters = await getServices();
 
   return (
-    <div className="bg-light">
+    <div className="bg-background-bright">
       <Container>
         <Header />
       </Container>

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background-bright: #d9cad2;
+}
+
 @layer base {
   :root {
     --background: 0 0% 89.45%;
@@ -66,7 +70,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-light text-foreground;
+    @apply bg-background-bright text-foreground;
   }
   p,
   h1,
@@ -75,7 +79,7 @@
   h4,
   a,
   div {
-    @apply selection:bg-button text-pink-950;
+    @apply selection:bg-button text-pink-800;
   }
 }
 

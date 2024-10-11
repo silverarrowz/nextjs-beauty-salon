@@ -5,9 +5,9 @@ const ContactsSection = () => {
       className="flex flex-col items-center justify-center mb-12 "
     >
       <h3 className="mb-4 text-xl">Адрес и контакты</h3>
-      <hr className="mb-4 h-px w-3/5 border-t-0 bg-transparent bg-gradient-to-r max-w-48 from-transparent via-black to-transparent opacity-40" />
+      <hr className="mb-4 h-px w-3/5 border-t-0 bg-transparent bg-gradient-to-r max-w-48 from-transparent via-pink-800 to-transparent opacity-40" />
 
-      <div className="mb-4 text-sm flex flex-col items-center sm:flex-row sm:gap-3 text-black/60">
+      <div className="mb-4 text-sm flex flex-col items-center sm:flex-row sm:gap-3">
         <p>salon@gombreich.ru</p>
         <p className="hidden sm:block">|</p>
         <p>+7 (939) 796-48-99</p>
