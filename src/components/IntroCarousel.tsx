@@ -66,7 +66,7 @@ const IntroCarousel = () => {
                   className="text-center text-2xl lg:text-base mb-8 lg:mb-0
                  text-pink-700 leading-snug lg:leading-tight max-w-full lg:max-w-72"
                 >
-                  Всю осень дарим скидку{" "}
+                  Всю весну дарим скидку{" "}
                   <span className="text-3xl lg:text-3xl">20%</span> на все
                   услуги&nbsp;для&nbsp;волос
                 </p>
@@ -84,7 +84,7 @@ const IntroCarousel = () => {
               </button>
 
               <p className="text-xs text-black/50 absolute bottom-2 right-4">
-                Акция действует до 31.11.2024
+                Акция действует до 31.05.2025
               </p>
             </div>
           </Link>
@@ -147,9 +147,6 @@ const IntroCarousel = () => {
         className="hidden lg:block hover:bg-transparent hover:text-pink-800/80"
         variant={"ghost"}
       />
-      <p className="text-xs uppercase text-black/40 mt-2 ml-4 md:ml-0">
-        Фото &copy; Freepik
-      </p>
     </Carousel>
   );
 };

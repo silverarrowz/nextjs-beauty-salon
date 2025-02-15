@@ -19,7 +19,6 @@ export default async function LoginPage() {
       justify-center items-center gap-2 h-full "
       >
         <LoginForm />
-        <TestCredentials />
       </Container>
       <Footer />
     </div>
