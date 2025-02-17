@@ -57,15 +57,15 @@ const WorksCarousel = () => {
               stopOnInteraction: false,
             }),
           ]}
-          className="max-w-[70%] sm:max-w-[80%] md:max-w-[82%] l:max-w-[90%] xl:max-w-[82%] relative"
+          className="max-w-[70%] sm:max-w-[80%] md:max-w-[82%] l:max-w-[90%] xl:max-w-[82%] relative w-full"
         >
           <CarouselContent>
             {worksPhotos.map((photo, index) => (
               <CarouselItem className="sm:basis-1/2 md:basis-1/3" key={index}>
-                <div className="relative aspect-square overflow-hidden object-center object-cover flex items-center justify-center">
+                <div className="relative aspect-square overflow-hidden object-center  flex items-center justify-center">
                   <Image
                     fill
-                    className="z-20"
+                    className="z-20 object-cover"
                     src={photo.src}
                     alt={photo.alt}
                   />
