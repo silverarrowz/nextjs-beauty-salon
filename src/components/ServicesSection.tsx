@@ -4,6 +4,7 @@ import { LuFlower } from "react-icons/lu";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Image from "next/image";
 
 const ServicesSection = () => {
   useEffect(() => {
@@ -24,7 +25,7 @@ const ServicesSection = () => {
       title: "Педикюр",
       description:
         "Уход за кожей стоп, очистка ногтевой пластины с удалением кутикулы, обработкой питательными маслами, покрытием лечебным или декоративным лаком",
-      image: "images/works/pedicure1.jpeg",
+      image: "/images/works/pedicure1.jpeg",
       price: "800-3000 руб.",
     },
     {
@@ -96,7 +97,8 @@ const ServicesSection = () => {
               bg-card justify-self-center"
             >
               <div className="relative overflow-hidden h-60 sm:h-48 lg:h-40 xl:h-52">
-                <img
+                <Image
+                  fill
                   className="object-cover w-full max-h-full mb-5
                  hover:scale-105 transition-transform"
                   src={service.image}

@@ -11,6 +11,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import Fade from "embla-carousel-fade";
 import { GiOakLeaf } from "react-icons/gi";
+import Image from "next/image";
 
 const IntroCarousel = () => {
   return (
@@ -43,7 +44,8 @@ const IntroCarousel = () => {
                 className="relative w-full h-[352px] sm:h-[496px] lg:h-[520px] lg:rounded-ss-3xl
                overflow-hidden z-10 flex-grow"
               >
-                <img
+                <Image
+                  fill
                   className="object-cover object-left w-full h-full"
                   src={"/images/intro-carousel-1.jpg"}
                   alt="фото салона"
@@ -100,7 +102,8 @@ const IntroCarousel = () => {
                 className="relative w-full h-[352px] sm:h-[448px]
                lg:h-[520px] lg:w-1/2 lg:rounded-ss-3xl overflow-hidden z-10 flex-grow"
               >
-                <img
+                <Image
+                  fill
                   src={"/images/intro-carousel-4.jpg"}
                   alt="фото салона"
                   className="object-cover w-full h-full"

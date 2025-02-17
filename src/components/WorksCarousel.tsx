@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -62,7 +63,12 @@ const WorksCarousel = () => {
             {worksPhotos.map((photo, index) => (
               <CarouselItem className="sm:basis-1/2 md:basis-1/3" key={index}>
                 <div className="relative aspect-square overflow-hidden object-center object-cover flex items-center justify-center">
-                  <img className="z-20" src={photo.src} alt={photo.alt} />
+                  <Image
+                    fill
+                    className="z-20"
+                    src={photo.src}
+                    alt={photo.alt}
+                  />
                   <div className="absolute top-0 left-0 bottom-0 right-0 z-30 bg-button/30 hover:bg-transparent transition" />
                 </div>
               </CarouselItem>
